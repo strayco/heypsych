@@ -35,7 +35,10 @@ let robotsSource: string;
 beforeAll(() => {
   sitemapGeneratorSource = fs.readFileSync(sitemapGeneratorPath, 'utf-8');
   sitemapToolsSource = fs.readFileSync(sitemapToolsPath, 'utf-8');
-  sitemapGuideSource = fs.readFileSync(sitemapGuidePath, 'utf-8');
+  // The route renders XML built in guide-sitemap.ts; check both.
+  sitemapGuideSource =
+    fs.readFileSync(sitemapGuidePath, 'utf-8') +
+    fs.readFileSync(path.join(process.cwd(), 'src/lib/programmatic-seo/guide-sitemap.ts'), 'utf-8');
   robotsSource = fs.readFileSync(robotsPath, 'utf-8');
 });
 

@@ -106,9 +106,28 @@ const fingerprintStore: Map<string, ContentFingerprint> = new Map();
 // ============ FINGERPRINTING ============
 
 /**
- * Generate a content fingerprint for a programmatic page
+ * Generate a content fingerprint for a programmatic page and record it in the
+ * module-level store.
+ *
+ * The store lives as long as the server process, so on a warm serverless
+ * instance it keeps every fingerprint from earlier calls. Callers that need a
+ * deterministic, bounded comparison set (the guide sitemap) should use
+ * createFingerprint() and pass their own sibling pool to
+ * checkSiblingUniqueness() instead.
  */
 export function generateFingerprint(
+  config: DynamicPageConfig,
+  content: GeneratedContent
+): ContentFingerprint {
+  const fingerprint = createFingerprint(config, content);
+  fingerprintStore.set(config.slug, fingerprint);
+  return fingerprint;
+}
+
+/**
+ * Build a content fingerprint without recording it anywhere.
+ */
+export function createFingerprint(
   config: DynamicPageConfig,
   content: GeneratedContent
 ): ContentFingerprint {
@@ -138,9 +157,6 @@ export function generateFingerprint(
     wordCount: content.wordCount,
     generatedAt: now,
   };
-
-  // Store fingerprint
-  fingerprintStore.set(config.slug, fingerprint);
 
   return fingerprint;
 }
@@ -266,8 +282,18 @@ export function compareFingerprints(
     fp2.sectionHeaders
   );
 
-  // Textual similarity (n-gram overlap)
-  const textual = calculateTextualSimilarity(fp1.ngramSet, fp2.ngramSet);
+  // Textual similarity (n-gram overlap). The intersection is counted once and
+  // the union derived from it (|A ∪ B| = |A| + |B| - |A ∩ B|) rather than
+  // materialising a merged Set per comparison; the guide sitemap runs millions
+  // of these, and building the union Set dominated its run time.
+  const sharedNgrams = countSetIntersection(fp1.ngramSet, fp2.ngramSet);
+  const totalNgrams = fp1.ngramSet.size + fp2.ngramSet.size - sharedNgrams;
+  const textual = calculateTextualSimilarity(
+    fp1.ngramSet.size,
+    fp2.ngramSet.size,
+    sharedNgrams,
+    totalNgrams
+  );
 
   // Topical similarity (topic overlap)
   const topical = calculateTopicalSimilarity(fp1.topics, fp2.topics);
@@ -286,9 +312,6 @@ export function compareFingerprints(
     ...fp1.sectionHeaders.filter(h => !fp2.sectionHeaders.includes(h)),
     ...fp2.sectionHeaders.filter(h => !fp1.sectionHeaders.includes(h)),
   ];
-
-  const sharedNgrams = countSetIntersection(fp1.ngramSet, fp2.ngramSet);
-  const totalNgrams = countSetUnion(fp1.ngramSet, fp2.ngramSet);
 
   const topicOverlap = fp1.topics.filter(t => fp2.topics.includes(t));
 
@@ -332,17 +355,16 @@ function calculateStructuralSimilarity(
  * Calculate textual similarity using Jaccard coefficient on n-grams
  */
 function calculateTextualSimilarity(
-  ngrams1: Set<string>,
-  ngrams2: Set<string>
+  size1: number,
+  size2: number,
+  intersection: number,
+  union: number
 ): number {
-  if (ngrams1.size < SIMILARITY_CONFIG.minNgrams ||
-      ngrams2.size < SIMILARITY_CONFIG.minNgrams) {
+  if (size1 < SIMILARITY_CONFIG.minNgrams ||
+      size2 < SIMILARITY_CONFIG.minNgrams) {
     // Not enough content to compare meaningfully
     return 0.5; // Neutral score
   }
-
-  const intersection = countSetIntersection(ngrams1, ngrams2);
-  const union = countSetUnion(ngrams1, ngrams2);
 
   return union > 0 ? intersection / union : 0;
 }
@@ -370,18 +392,13 @@ function calculateTopicalSimilarity(
  * Count intersection of two sets
  */
 function countSetIntersection(set1: Set<string>, set2: Set<string>): number {
+  // Iterate the smaller set; the count is the same either way.
+  const [small, large] = set1.size <= set2.size ? [set1, set2] : [set2, set1];
   let count = 0;
-  for (const item of set1) {
-    if (set2.has(item)) count++;
+  for (const item of small) {
+    if (large.has(item)) count++;
   }
   return count;
-}
-
-/**
- * Count union of two sets
- */
-function countSetUnion(set1: Set<string>, set2: Set<string>): number {
-  return new Set([...set1, ...set2]).size;
 }
 
 // ============ SIBLING COMPARISON ============
@@ -390,11 +407,12 @@ function countSetUnion(set1: Set<string>, set2: Set<string>): number {
  * Find siblings for a page (pages that might be similar)
  */
 export function findPotentialSiblings(
-  config: DynamicPageConfig
+  config: DynamicPageConfig,
+  pool: Iterable<ContentFingerprint> = fingerprintStore.values()
 ): ContentFingerprint[] {
   const siblings: ContentFingerprint[] = [];
 
-  for (const fp of fingerprintStore.values()) {
+  for (const fp of pool) {
     if (fp.slug === config.slug) continue; // Skip self
 
     // Pages are potential siblings if they share:
@@ -420,7 +438,8 @@ export function findPotentialSiblings(
  * Check if a page is too similar to its siblings
  */
 export function checkSiblingUniqueness(
-  fingerprint: ContentFingerprint
+  fingerprint: ContentFingerprint,
+  pool?: Iterable<ContentFingerprint>
 ): {
   isUnique: boolean;
   highestSimilarity: number;
@@ -435,7 +454,7 @@ export function checkSiblingUniqueness(
     demographic: fingerprint.demographic,
     priority: 0,
     searchVolume: 'medium',
-  });
+  }, pool);
 
   let highestSimilarity = 0;
   let mostSimilarSibling: string | undefined;

@@ -1,119 +1,38 @@
 /**
  * Sitemap for Programmatic SEO Pages
  *
- * Dynamically generates sitemap for thousands of long-tail guide pages.
- * ONLY includes indexable pages - noindex pages are excluded to avoid crawl budget waste.
+ * Lists the indexable /guide/* pages. Noindex pages are excluded to avoid crawl
+ * budget waste; the decision comes from the Central Indexation Firewall
+ * (src/lib/seo/index-decision-service.ts) via getGuideSitemapEntries().
  *
- * INTEGRATION: Uses the Central Indexation Firewall (index-decision-service.ts)
- * for all indexability decisions. This ensures sitemaps, metadata, and internal
- * promotion all use the same source of truth.
+ * Built once at build time. Guide pages are generated from data/ files, which
+ * only change with a deploy, and computing the list compares ~4,000 generated
+ * pages with each other. Run per request it took about a minute on a cold
+ * instance and longer on a warm one, and timed out at 300 seconds in
+ * production (2026-11-12). See src/lib/programmatic-seo/guide-sitemap.ts.
  *
- * @see src/lib/seo/index-decision-service.ts
+ * SITEMAP FRESHNESS POLICY: no lastmod. Guide pages are programmatic and have
+ * no real update date; a generated date would tell crawlers every page changed.
+ * @see https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#lastmod
+ *
+ * There is no try/catch on purpose: a failure fails the build, so the previous
+ * deployment keeps serving its sitemap instead of a static error page.
  */
 
 import { NextResponse } from 'next/server';
-import { generateDynamicPageConfigs, parseDynamicSlug } from '@/lib/programmatic-seo/dynamic-generator';
-import { generatePageContent } from '@/lib/programmatic-seo/content-engine';
-import { makeGuideIndexDecision } from '@/lib/seo/index-decision-service';
-import { evaluateCohort, getSitemapEligiblePages } from '@/lib/programmatic-seo/cohort-manager';
-import { generateFingerprint, checkSiblingUniqueness } from '@/lib/programmatic-seo/similarity-engine';
+import { getGuideSitemapEntries, renderGuideSitemapXml } from '@/lib/programmatic-seo/guide-sitemap';
 import { SITE_CONFIG } from '@/lib/seo/config';
 
-export const dynamic = 'force-dynamic';
-export const revalidate = 86400; // Revalidate daily
+export const dynamic = 'force-static';
 
 export async function GET() {
-  try {
-    const baseUrl = SITE_CONFIG.url.trim().replace(/\/+$/, '');
-    const allConfigs = await generateDynamicPageConfigs();
+  const entries = await getGuideSitemapEntries();
+  const xml = renderGuideSitemapXml(SITE_CONFIG.url, entries);
 
-    // Filter to only indexable pages using the Central Indexation Firewall
-    console.log(`[Sitemap] Filtering ${allConfigs.length} pages through Central Indexation Firewall...`);
-    const indexableConfigs = [];
-
-    for (const config of allConfigs) {
-      // Only list URLs that resolve to a page: the page parses its slug back
-      // with parseDynamicSlug, and anything it cannot parse is a 404.
-      if (!/^[a-z0-9-]+$/.test(config.slug) || !(await parseDynamicSlug(config.slug))) continue;
-      const content = await generatePageContent(config);
-      if (!content) continue;
-
-      // Generate fingerprint for similarity checking
-      const fingerprint = generateFingerprint(config, content);
-
-      // Check uniqueness against siblings
-      const uniqueness = checkSiblingUniqueness(fingerprint);
-
-      // Use the Central Indexation Firewall for the final decision
-      const decision = makeGuideIndexDecision(config.slug, {
-        pageType: config.pageType,
-        wordCount: content.wordCount,
-        uniquenessScore: uniqueness.isUnique ? 1 - uniqueness.highestSimilarity : uniqueness.highestSimilarity,
-        safetyScore: content.disclaimerLevel === 'critical' ? 0.9 : 0.8,
-        hasDemographicContent: !!config.demographic,
-      });
-
-      // Also evaluate cohort for tracking
-      evaluateCohort(config, content);
-
-      if (decision.sitemapEligible) {
-        indexableConfigs.push(config);
-      }
-    }
-
-    console.log(`[Sitemap] ${indexableConfigs.length} of ${allConfigs.length} pages are sitemap-eligible`);
-    const configs = indexableConfigs;
-
-    // SITEMAP FRESHNESS POLICY:
-    // Guide pages are programmatically generated. Using new Date() for lastmod
-    // destroys trust signals. Omit lastmod entirely - Google uses discovery date.
-    // @see https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap#lastmod
-
-    // Generate XML (no lastmod - these are programmatic pages without real update dates)
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${configs.map(config => `  <url>
-    <loc>${baseUrl}/guide/${config.slug}</loc>
-    <changefreq>${getChangeFreq(config.searchVolume)}</changefreq>
-    <priority>${getPriority(config.priority, config.searchVolume)}</priority>
-  </url>`).join('\n')}
-</urlset>`;
-
-    console.log(`[Sitemap] Generated sitemap with ${configs.length} guide pages`);
-
-    return new NextResponse(xml, {
-      headers: {
-        'Content-Type': 'application/xml',
-        'Cache-Control': 'public, max-age=86400, s-maxage=86400',
-      },
-    });
-  } catch (error) {
-    console.error('[Sitemap] Error generating guide sitemap:', error);
-    return new NextResponse('Error generating sitemap', { status: 500 });
-  }
-}
-
-function getChangeFreq(searchVolume: string): string {
-  switch (searchVolume) {
-    case 'high':
-      return 'weekly';
-    case 'medium':
-      return 'weekly';
-    case 'low':
-      return 'monthly';
-    default:
-      return 'weekly';
-  }
-}
-
-function getPriority(priority: number, searchVolume: string): string {
-  // Priority 1 = highest value pages
-  // Search volume also affects priority
-  
-  if (priority === 1 && searchVolume === 'high') return '0.9';
-  if (priority === 1) return '0.8';
-  if (priority === 2 && searchVolume === 'high') return '0.8';
-  if (priority === 2) return '0.7';
-  if (priority === 3) return '0.6';
-  return '0.5';
+  return new NextResponse(xml, {
+    headers: {
+      'Content-Type': 'application/xml',
+      'Cache-Control': 'public, max-age=86400, s-maxage=86400',
+    },
+  });
 }

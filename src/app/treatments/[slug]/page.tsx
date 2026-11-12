@@ -161,9 +161,13 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
   );
 }
 
-// Revalidate every 24 hours (ISR)
-// Pages are static but refresh daily for updated content
-export const revalidate = 86400;
+// Weekly. Everything this page renders comes from data/ files in the repo, so
+// it only changes with a deploy, and a deploy starts a fresh ISR cache anyway.
+// Each regeneration re-renders the page and writes it back to the ISR cache
+// (billed as Fluid CPU and ISR writes) with identical output; crawlers revisit
+// these long-tail pages daily, so a daily interval re-rendered them daily for
+// nothing. The week bounds how long a bad render could stick.
+export const revalidate = 604800;
 
 // Treatment pages render only from local JSON, so generateStaticParams above
 // enumerates every treatment that can exist. Refusing dynamic params makes an

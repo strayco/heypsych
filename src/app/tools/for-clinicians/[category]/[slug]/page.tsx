@@ -370,6 +370,10 @@ function buildGuide(
 
 // Structured Data - Nuclear SEO Implementation
 // Returns 8-12 schemas for maximum SERP feature coverage
-// Daily: content comes from data/ files that only change on deploy (which
-// rebuilds everything); daily keeps date-based copy current. Hourly cost 24x more.
-export const revalidate = 86400;
+// Weekly. Everything this page renders comes from data/ files in the repo, so
+// it only changes with a deploy, and a deploy starts a fresh ISR cache anyway.
+// Each regeneration re-renders the page and writes it back to the ISR cache
+// (billed as Fluid CPU and ISR writes) with identical output; crawlers revisit
+// these long-tail pages daily, so a daily interval re-rendered them daily for
+// nothing. The week bounds how long a bad render could stick.
+export const revalidate = 604800;

@@ -294,8 +294,13 @@ export default async function ComparisonPage({
   );
 }
 
-// Revalidate every 24 hours
-export const revalidate = 86400;
+// Weekly. Everything this page renders comes from data/ files in the repo, so
+// it only changes with a deploy, and a deploy starts a fresh ISR cache anyway.
+// Each regeneration re-renders the page and writes it back to the ISR cache
+// (billed as Fluid CPU and ISR writes) with identical output; crawlers revisit
+// these long-tail pages daily, so a daily interval re-rendered them daily for
+// nothing. The week bounds how long a bad render could stick.
+export const revalidate = 604800;
 
 // Allow dynamic slugs not in generateStaticParams
 export const dynamicParams = true;

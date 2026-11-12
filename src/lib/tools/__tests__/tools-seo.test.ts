@@ -162,8 +162,8 @@ describe("Canonical URL Consistency", () => {
 
     // Should not contain hardcoded domain
     expect(url).not.toContain("heypsych.com");
-    expect(url).toContain("/tools/betterhelp/");
-    expect(url.endsWith("/")).toBe(true);
+    // Matches the sitemap and the served URL (/tools/x/ redirects to /tools/x).
+    expect(url.endsWith("/tools/betterhelp")).toBe(true);
   });
 
   it("search canonical URL canonicalizes to audience page", () => {

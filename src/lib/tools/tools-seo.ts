@@ -195,9 +195,13 @@ export function filterToolsForSitemap(
 /**
  * Get canonical URL for a tool
  * Uses central siteConfig, never hardcoded hosts
+ *
+ * No trailing slash: /tools/x/ answers with a 308 to /tools/x, and the tools
+ * sitemap lists /tools/x. A canonical that redirects sends crawlers through an
+ * extra hop and contradicts the sitemap.
  */
 export function getToolCanonicalUrl(slug: string): string {
-  return `${siteConfig.url}/tools/${slug}/`;
+  return `${siteConfig.url}/tools/${slug}`;
 }
 
 /**
