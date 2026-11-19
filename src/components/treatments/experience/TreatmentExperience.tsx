@@ -19,6 +19,9 @@ import { UsesExplorer } from "./UsesExplorer";
 import { SideEffectExplorer } from "./SideEffectExplorer";
 import { SituationPicker } from "./SituationPicker";
 import { FeelJourney } from "./FeelJourney";
+import { SaveToPath } from "@/components/path/SaveToPath";
+import { treatmentFacts } from "@/domains/path/facts";
+import { featureFlags } from "@/lib/config/feature-flags";
 
 function formatDate(value: string | null | undefined): string | null {
   if (!value) return null;
@@ -121,9 +124,13 @@ export function TreatmentExperience({ treatment }: { treatment: TreatmentV3 }) {
               </ul>
             )}
 
+            {featureFlags.pathWorkspace && treatment.identity?.slug && (
+              <SaveToPath kind="treatment" slug={treatment.identity.slug} name={x.name} facts={treatmentFacts(treatment)} />
+            )}
+
             <p className="text-label-tertiary mt-5 text-[13px]">
               Reviewed by the{" "}
-              <Link href="/about/medical-review-board" className="text-accent hover:underline">
+              <Link href="/about/medical-review-board" className="text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent">
                 HeyPsych Medical Review Board
               </Link>
               {reviewed ? ` · Reviewed ${reviewed}` : updated ? ` · Updated ${updated}` : ""}

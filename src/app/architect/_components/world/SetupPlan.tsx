@@ -19,10 +19,16 @@ import {
   type SetupTask,
 } from "@/domains/architect/services/setup-plan-service";
 import type { WorldState } from "@/domains/architect/world/world-state";
+import type { ProjectCostSummary } from "@/domains/architect/services/project-summary-service";
+import { PracticePlanSheet } from "./PracticePlanSheet";
+import { trackArchitectEvent } from "@/domains/architect/analytics";
+import type { ArchitectProductDisplay } from "@/domains/architect/services";
 
 interface SetupPlanProps {
   project: PracticeProject;
   world: WorldState;
+  cost: ProjectCostSummary | null;
+  displayMap?: Map<string, ArchitectProductDisplay>;
   onSetTaskStatus: (
     taskId: string,
     status: "todo" | "in-progress" | "done"
@@ -32,11 +38,14 @@ interface SetupPlanProps {
 export function SetupPlan({
   project,
   world,
+  cost,
+  displayMap,
   onSetTaskStatus,
 }: SetupPlanProps) {
   const plan = buildSetupPlan(project, world);
 
   const download = () => {
+    trackArchitectEvent("architect_stack_export", { productsCount: project.assignments.length, source: "text" });
     const blob = new Blob([formatSetupPlanAsText(project, plan)], {
       type: "text/plain;charset=utf-8",
     });
@@ -61,6 +70,7 @@ export function SetupPlan({
 
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-6">
+      <PracticePlanSheet project={project} world={world} cost={cost} completedTasks={plan.completedTasks} totalTasks={plan.totalTasks} displayMap={displayMap} />
       <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
         <div>
           <h2 className="text-lg font-semibold text-label-primary">
@@ -107,7 +117,7 @@ export function SetupPlan({
       ))}
 
       {/* The limits of this plan, stated rather than implied. */}
-      <p className="mt-8 rounded-xl border border-separator bg-fill-quaternary p-3 text-xs leading-relaxed text-label-tertiary">
+      <p className="mt-8 rounded-xl border border-separator bg-fill-quaternary p-3 text-xs leading-relaxed text-label-secondary">
         This plan records decisions you made here. Ticking a task does not
         create an account, enable billing or e-prescribing, or establish
         compliance with any regulation — those happen with the vendor, and we

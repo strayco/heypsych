@@ -59,14 +59,14 @@ export function Footer() {
             <div className="flex items-center gap-4">
               <a
                 href="tel:988"
-                className="text-sm font-semibold text-negative hover:underline"
+                className="text-sm font-semibold text-negative-800 hover:underline"
               >
                 Call or text 988
               </a>
               <span className="text-negative-border">|</span>
               <Link
                 href="/resources/support-community/immediate-crisis"
-                className="text-sm font-medium text-negative-600 hover:text-negative hover:underline"
+                className="text-sm font-medium text-negative-700 hover:text-negative-800 hover:underline"
               >
                 More resources
               </Link>
@@ -126,7 +126,7 @@ export function Footer() {
             <p className="text-sm text-label-tertiary">
               © {currentYear} {siteConfig.name}. All rights reserved.
             </p>
-            <p className="text-xs text-label-quaternary">
+            <p className="text-xs text-label-tertiary">
               HeyPsych provides decision-support information. Not a substitute for professional medical advice.
             </p>
           </div>

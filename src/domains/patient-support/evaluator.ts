@@ -31,7 +31,7 @@ import {
 /**
  * Evaluator version - increment when logic changes
  */
-const EVALUATOR_VERSION = "1.0.0";
+const EVALUATOR_VERSION = "1.1.0";
 
 /**
  * Evaluate patient input and return support path recommendation
@@ -109,7 +109,7 @@ function createCrisisResult(
       },
       {
         label: "When ready, explore ongoing support",
-        href: "/find-support?return=true",
+        href: "/find-support?need=support",
         type: "navigation",
       },
     ],
@@ -377,8 +377,8 @@ function buildNextActions(pathId: SupportPathId, input: PatientJourneyInput): Ne
 
     case "therapy-counseling":
       actions.push({
-        label: "Explore therapy platforms",
-        href: "/tools/find-support/therapy-platforms",
+        label: "Compare therapy options",
+        href: "/tools/online-therapy",
         type: "navigation",
       });
       break;
@@ -390,8 +390,8 @@ function buildNextActions(pathId: SupportPathId, input: PatientJourneyInput): Ne
         type: "navigation",
       });
       actions.push({
-        label: "Explore psychiatry platforms",
-        href: "/tools/find-support/psychiatry-platforms",
+        label: "Compare online psychiatry",
+        href: "/tools/online-psychiatry",
         type: "navigation",
       });
       break;
@@ -403,8 +403,8 @@ function buildNextActions(pathId: SupportPathId, input: PatientJourneyInput): Ne
         type: "navigation",
       });
       actions.push({
-        label: "Explore therapy platforms",
-        href: "/tools/find-support/therapy-platforms",
+        label: "Compare therapy options",
+        href: "/tools/online-therapy",
         type: "navigation",
       });
       break;
@@ -419,8 +419,8 @@ function buildNextActions(pathId: SupportPathId, input: PatientJourneyInput): Ne
 
     case "digital-tools":
       actions.push({
-        label: "Explore mental health apps",
-        href: "/tools/find-support",
+        label: "Compare self-guided apps",
+        href: "/tools/self-guided",
         type: "navigation",
       });
       break;
@@ -444,7 +444,7 @@ function buildNextActions(pathId: SupportPathId, input: PatientJourneyInput): Ne
   // Always add start over option
   actions.push({
     label: "Start over",
-    href: "/find-support",
+    href: "/find-support?need=support",
     type: "reset",
   });
 

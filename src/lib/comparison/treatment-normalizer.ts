@@ -665,7 +665,7 @@ export class TreatmentNormalizer {
           )
         : undefined,
       serious_risks: seriousRisks.length > 0 ? seriousRisks : undefined,
-      black_box_warning: (warningsSection?.black_box as string) || undefined,
+      black_box_warning: (warningsSection?.black_box as string) || statedBoxedWarning(v2),
       contraindications: contraindications.length > 0 ? contraindications : undefined,
       precautions: (warningsSection?.other as string[]) || undefined,
       interactions: this.normalizeInteractions(v2),
@@ -821,7 +821,9 @@ export class TreatmentNormalizer {
     const controlled = metadata.controlled_substance;
     const schedule = metadata.dea_schedule || metadata.controlled_schedule;
 
-    if (controlled === false || controlled === "Not Controlled" || controlled === null) {
+    // Only an explicit "no" means not controlled. A null or empty field is
+    // unknown, never "not controlled".
+    if (controlled === false || controlled === "Not Controlled") {
       return { is_controlled: false };
     }
 
@@ -1125,6 +1127,30 @@ export class TreatmentNormalizer {
 /**
  * Normalizes a v2 treatment to v3 format
  */
+/**
+ * Legacy (2025 import) records have no structured boxed-warning field, but
+ * some state the warning in their own reviewed prose ("This form carries its
+ * own boxed warning for post-injection delirium/sedation syndrome (PDSS)…").
+ * Reuse that sentence verbatim. Negations ("does not carry a boxed warning")
+ * are skipped. Nothing is inferred: no sentence, no warning text, and a
+ * missing warning is shown as "not listed", never as "none".
+ */
+const BOXED_MENTION = /\b(boxed warning|black[- ]box)/i;
+const BOXED_NEGATED = /\b(no|not|without|lacks?|unlike)\b[^.]{0,60}\b(boxed warning|black[- ]box)|\b(boxed warning|black[- ]box)[^.]{0,30}\b(not|removed|lifted)\b/i;
+
+export function statedBoxedWarning(v2: Pick<TreatmentV2, "summary" | "description" | "sections">): string | undefined {
+  const overview = (v2.sections ?? [])
+    .filter((s) => s.type === "overview")
+    .map((s) => (typeof s.content === "string" ? s.content : typeof s.text === "string" ? s.text : ""));
+  for (const text of [v2.summary, v2.description, ...overview]) {
+    if (typeof text !== "string") continue;
+    for (const sentence of text.split(/(?<=[.!?])\s+/)) {
+      if (BOXED_MENTION.test(sentence) && !BOXED_NEGATED.test(sentence)) return sentence.trim();
+    }
+  }
+  return undefined;
+}
+
 export function normalizeTreatment(v2: TreatmentV2): NormalizationResult {
   const normalizer = new TreatmentNormalizer();
   return normalizer.normalize(v2);

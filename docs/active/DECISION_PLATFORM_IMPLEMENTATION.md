@@ -628,9 +628,9 @@ Recommended default when a choice is needed for non-production planning:
 
 <!-- BEGIN IMPLEMENTATION STATE -->
 ```yaml
-state_version: 31
-last_verified_at: "2026-10-22"
-verified_commit: "16b36c4318d8a6b67919135b2f2458bec591ebb1"
+state_version: 33
+last_verified_at: "2026-11-19"
+verified_commit: "fb170bda6922431865e7a65db32f4a199fa219d0"
 
 active_phase: 6
 active_slice: "complete"
@@ -1749,6 +1749,102 @@ is best for them, visually, in every category.
   (pay intents use approaches across all steps).
 - Cards now say their approach ("Learn a program", "Specialist care") rather
   than only "On your own".
+
+### HeyPsych Next — Your Path (2026-11-18, base fb170bd, uncommitted)
+
+Summary and rationale: `HEYPSYCH_NEXT.md`. One connected leap on existing
+parts; no engine rewritten (D-001), local only (D-012), deterministic (D-006).
+
+**Drift found and corrected (important, same class as POPULAR_TOOLS).** The
+Phase 2 entry above describes `SupportJourney.tsx` as a multi-step journey
+using the evaluator. In the live code it was three static links to retired
+routes (`/tools/find-support/therapy-platforms`, `…/psychiatry-platforms`,
+`/tools/for-patients`), and nothing outside `src/domains/patient-support`
+imported the evaluator. The patient pilot was never reachable.
+
+**Shipped:**
+- `src/domains/path/` (pure): `types`, `facts` (condition/treatment record →
+  brief facts, server), `questions` (versioned templates with cited basis),
+  `brief` (+ plain text), `journey` (pre-fill from notes, live destinations),
+  `document` (forgiving parse/update of `hp:path`).
+- `src/components/path/`: `store` (one view over `hp:path`, `hp:noticed`,
+  `hp:saved-apps`, `hp:selfhelp:*`; `hp:path-change` event), `SaveToPath`,
+  `PathIndicator` (header), `ResumePath` (homepage), `NextStepJourney`,
+  `PathWorkspace`, `AppointmentBrief`, `analytics`.
+- `/my-path` (noindex, robots-disallowed). `/find-support?need=support` runs the
+  evaluator. Condition and treatment headers get the save control.
+- Evaluator next-action hrefs → live routes, `EVALUATOR_VERSION` 1.1.0;
+  selection logic untouched. `SupportEntry` "tools" → `/tools`.
+- `HelpChecklist` stores strategy text (migrates old index arrays on read).
+- Flag `NEXT_PUBLIC_PATH_WORKSPACE` (default true; literal access so it
+  inlines on the client).
+- Contracts: `PATIENT_PILOT_CONTRACT.md` §12 (journey departures),
+  `DECISION_EVENTS_CONTRACT.md` (Your Path events).
+
+**Verified by execution (Linux sandbox copy of the repo):**
+- `npx tsc --noEmit` clean; ESLint 0 errors on touched files.
+- `npx vitest run --exclude='**/psychTrail/**'`: 82 files, 1,806 passed, 1
+  skipped (22 new in `src/domains/path/__tests__`, all records exercised).
+- `npx next build` exit 0, 1,317 pages, `/my-path` static. The build sandbox
+  cannot reach Google Fonts, so `fonts.ts` was swapped for `next/font/local`
+  during the build only and then reverted (not part of the change).
+- `npx playwright test tests/e2e/your-path.spec.ts` against `next start`: 4
+  passed.
+- Headless Chrome at 1440 / 390 / 320: full journey, no hydration errors,
+  no horizontal overflow; keyboard focus moves to each question; the crisis
+  branch shows only crisis help; print outputs the brief alone.
+
+**Open:**
+- Clinical review: question templates and §12 departures (owner unassigned).
+- Pre-existing: unlayered `a { color: inherit }` in `globals.css` overrides
+  Tailwind `text-*` utilities on every link site-wide. Worked around in
+  Your Path; the global fix needs a visual review.
+- Not run: the full Playwright suite, physical devices, VoiceOver/NVDA,
+  Lighthouse. Not deployed.
+
+### Breakthrough release — live decision board (2026-11-19, uncommitted)
+
+Summary: `BREAKTHROUGH_RELEASE.md`. Builds on Your Path; no engine rewritten.
+
+- Patient journey is one live board after the unchanged urgency gate
+  (`NextStepJourney.tsx`); `what-if.ts` explains rules via evaluator
+  re-runs (never urgency, never crisis). Contract: PATIENT_PILOT §12.1.
+- `/my-path` is a map (`PathMap.tsx`, `graph.ts`) + readiness
+  (`readiness.ts`, appointment date) + Map/Brief tabs. `hp:path` gains
+  `appointment`; treatment facts gain `usedForSlugs`; `hp:path-visit` holds
+  the last visit date (local).
+- Practice Architect: `draft-stack-service.ts` ("Draft my practice"; picks
+  carry `suggested: true`, an optional additive field on `ToolAssignmentZ`),
+  `PlanLedger.tsx`, `PracticePlanSheet.tsx` (printable, profile links).
+- Verified: tsc clean; vitest 1,816 passed; `next build` exit 0 (font shim
+  in sandbox only, reverted); `tests/e2e/your-path.spec.ts` 5/5 against
+  `next start`; axe-core 0 violations on six states; no overflow at
+  320/390/768.
+- Open: clinical review (unassigned) of new wording; Architect draft quality
+  inherits engine ranking and catalog evidence gaps; not deployed.
+
+### Final launch pass — live updates, funnel, fixes (2026-11-19, uncommitted)
+
+Summary: `FINAL_RELEASE.md`; operations: `RAPID_UPDATES.md`; gates:
+`LAUNCH_CHECKLIST.md`.
+
+- Live updates on existing Supabase Postgres + Next data cache: table
+  `hp_live_revisions` (migration 047), `src/lib/live/*`, Admin at
+  `/hp-ctrl-8k3m9x/live`. Tool overlays are allow-listed fields validated by
+  `ClinicianToolV4Z`; compliance/commercial/editorial fields locked; clinical
+  content not editable. Tool publishes revalidate with "max" (routes with
+  dynamicParams=false 404 on hard expiry); config publishes expire at once.
+  `/api/architect/products?v=` is edge-cached only when `v` matches.
+- Funnel events + North Star: DECISION_EVENTS_CONTRACT "Launch funnel".
+- Fixes found by verification: compare panel asserted "None on the label"
+  for missing boxed-warning data (lithium, methylphenidate…) → never assert
+  absence (`safety-cells.ts`); schema bootstrap deadlock; link colour moved to
+  `@layer base` (footer 988 contrast, in-text link underline).
+- Verified on `next start`: vitest 1,849; e2e 162 pass / 36 fail, all 36
+  also fail on fb170bd (0 regressions); 149-page SEO diff vs fb170bd: 0.
+- Open: clinical review (unassigned); 102 medication records lack
+  boxed-warning text; condition/treatment `<main>` not server-rendered (also
+  on fb170bd); not deployed.
 
 <!-- END IMPLEMENTATION STATE -->
 

@@ -6,11 +6,13 @@
  * Step one asks "What brings you here?" and offers plain-language starting
  * points that lead to existing HeyPsych experiences (see SupportEntry). The
  * "treatment or support" starting point continues here, at ?need=support, to
- * the existing care-type choice (SupportJourney).
+ * the next-step journey (NextStepJourney): the clinician-reviewed
+ * patient-support evaluator, pre-filled from the visitor's own notes. With
+ * NEXT_PUBLIC_PATH_WORKSPACE=false it falls back to the previous care-type
+ * links (SupportJourney).
  *
- * This is navigation, not triage. Nothing is scored or stored; crisis
- * information is shown on every view, independently of any choice, and
- * without JavaScript.
+ * Crisis information is shown on every view, independently of any choice,
+ * and without JavaScript. Journey answers stay in the visitor's browser.
  *
  * See: docs/active/contracts/PATIENT_PILOT_CONTRACT.md
  *
@@ -25,6 +27,9 @@ import { featureFlags } from "@/lib/config/feature-flags";
 import { displayFont } from "@/components/brand/fonts";
 import { SupportJourney } from "./_components/SupportJourney";
 import { SupportEntry } from "./_components/SupportEntry";
+import { NextStepJourney } from "@/components/path/NextStepJourney";
+import { SYMPTOM_CATEGORIES, SYMPTOM_REGISTRY } from "@/domains/symptoms/registry";
+import type { SymptomRef } from "@/domains/path";
 
 export const metadata: Metadata = {
   title: "Find Your Way",
@@ -35,6 +40,11 @@ export const metadata: Metadata = {
     follow: false,
   },
 };
+
+/** Public symptom reference data, so the journey can pre-fill from the visitor's own notes. */
+function symptomRefs(): SymptomRef[] {
+  return SYMPTOM_REGISTRY.map((s) => ({ slug: s.slug, name: s.name, category: s.category, alsoCausedBy: [], seekHelpWhen: [] }));
+}
 
 interface FindSupportPageProps {
   searchParams: Promise<{ need?: string | string[] }>;
@@ -55,7 +65,7 @@ export default async function FindSupportPage({ searchParams }: FindSupportPageP
   return (
     <div className={`${displayFont.variable} bg-canvas min-h-screen`}>
       <div className="px-4 pt-8 pb-16 sm:px-6 sm:pt-12 lg:px-8">
-        <div className="mx-auto max-w-3xl">
+        <div className={`mx-auto ${showSupportTypes && featureFlags.pathWorkspace ? "max-w-6xl" : "max-w-3xl"}`}>
           {/* Crisis information: always present, before any choice. */}
           <aside
             aria-label="Crisis support"
@@ -88,8 +98,12 @@ export default async function FindSupportPage({ searchParams }: FindSupportPageP
               >
                 <span aria-hidden="true">←</span> What brings you here?
               </Link>
-              <h1 className="sr-only">Find treatment or support</h1>
-              <SupportJourney />
+              <h1 className="sr-only">Find your next step</h1>
+              {featureFlags.pathWorkspace ? (
+                <NextStepJourney categories={SYMPTOM_CATEGORIES} refs={symptomRefs()} />
+              ) : (
+                <SupportJourney />
+              )}
             </>
           ) : (
             <>

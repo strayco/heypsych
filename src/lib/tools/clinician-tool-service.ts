@@ -21,6 +21,8 @@ import { PRACTICE_GRADE_SLUGS } from "./practice-grade-catalog";
 // ============================================================================
 
 export type { ClinicianToolV4 } from "../schemas/clinician-tool-v4";
+import { getLiveTools } from "@/lib/live/state";
+import { applyToolOverlays } from "@/lib/live/apply-tools";
 export { isPublishReady } from "../schemas/clinician-tool-v4";
 
 // ============================================================================
@@ -98,8 +100,9 @@ export function isToolPublishable(tool: ClinicianToolV4): boolean {
     return false;
   }
 
-  // LAUNCH SAFETY: Must be on allowlist (temporary)
-  if (!LAUNCH_ALLOWLIST.has(tool.slug)) {
+  // LAUNCH SAFETY: Must be on allowlist (temporary). Tools created and
+  // published in HeyPsych Admin are allow-listed by that publication.
+  if (!LAUNCH_ALLOWLIST.has(tool.slug) && !liveCreatedSlugs.has(tool.slug)) {
     return false;
   }
 
@@ -118,6 +121,14 @@ export function filterPublishableTools(
 // ============================================================================
 // FILE SYSTEM LOADER
 // ============================================================================
+
+// Reviewed records from data/tools-v4 (the baseline, loaded once per instance)
+let baseValidToolsCache: ClinicianToolV4[] | null = null;
+// Live updates applied on top of the baseline, rebuilt when the published version changes
+let appliedLiveVersion: string | null = null;
+let liveCreatedSlugs: ReadonlySet<string> = new Set();
+let liveOverriddenSlugs: ReadonlySet<string> = new Set();
+let lastLiveErrors: { key: string; error: string }[] = [];
 
 // Cache for schema-valid tools (may include drafts)
 let allValidToolsCache: ClinicianToolV4[] | null = null;
@@ -196,18 +207,15 @@ function findJsonFiles(dir: string, fs: any, path: any): string[] {
 async function loadV4ToolsFromFiles(
   includeUnpublished = false
 ): Promise<ClinicianToolV4[]> {
-  // Return cached publishable tools if available
-  if (!includeUnpublished && publishableToolsCache) {
-    return publishableToolsCache;
-  }
-
-  // Return cached all-valid tools if available
-  if (includeUnpublished && allValidToolsCache) {
-    return allValidToolsCache;
+  // Live updates (HeyPsych Admin): cached read, re-applied only when the
+  // published version changes. See src/lib/live/state.ts.
+  const live = await getLiveTools();
+  if (baseValidToolsCache && appliedLiveVersion === live.version) {
+    return includeUnpublished ? allValidToolsCache || [] : publishableToolsCache || [];
   }
 
   // Need to load from files
-  if (!allValidToolsCache) {
+  if (!baseValidToolsCache) {
     const fs = loadServerModule("fs");
     const path = loadServerModule("path");
 
@@ -271,29 +279,22 @@ async function loadV4ToolsFromFiles(
         return a.name.localeCompare(b.name);
       });
 
-      allValidToolsCache = validTools;
-      validToolsBySlugCache = bySlug;
-
-      // Compute publishable subset
-      const publishable = filterPublishableTools(validTools);
-      publishableToolsCache = publishable;
-      publishableBySlugCache = new Map(
-        publishable.map((t) => [t.slug, t])
-      );
+      baseValidToolsCache = validTools;
+      void bySlug;
 
       // Store stats for debugging
       lastValidationStats = {
         total: files.length,
         schemaValid: validTools.length,
         schemaInvalid: files.length - validTools.length,
-        publishable: publishable.length,
+        publishable: filterPublishableTools(validTools).length,
         errors: errors.slice(0, 20),
       };
 
       // Log summary in development
       if (process.env.NODE_ENV === "development") {
         console.log(
-          `[ClinicianToolService] Loaded ${validTools.length}/${files.length} schema-valid tools, ${publishable.length} publishable`
+          `[ClinicianToolService] Loaded ${validTools.length}/${files.length} schema-valid tools, ${lastValidationStats.publishable} publishable`
         );
       }
     } catch (error) {
@@ -301,6 +302,22 @@ async function loadV4ToolsFromFiles(
       return [];
     }
   }
+
+  // Apply published live updates to the baseline (validated; a bad overlay
+  // keeps the reviewed file version).
+  const applied = applyToolOverlays(baseValidToolsCache || [], live.rows);
+  liveCreatedSlugs = applied.createdSlugs;
+  liveOverriddenSlugs = applied.overriddenSlugs;
+  lastLiveErrors = applied.errors;
+  if (applied.errors.length > 0) console.error("[ClinicianToolService] live updates not applied:", applied.errors);
+
+  const validTools = applied.tools;
+  allValidToolsCache = validTools;
+  validToolsBySlugCache = new Map(validTools.map((t) => [t.slug, t]));
+  const publishable = filterPublishableTools(validTools);
+  publishableToolsCache = publishable;
+  publishableBySlugCache = new Map(publishable.map((t) => [t.slug, t]));
+  appliedLiveVersion = live.version;
 
   // Return appropriate cache
   if (includeUnpublished) {
@@ -743,7 +760,26 @@ export class ClinicianToolService {
   /**
    * Clear cache (useful for development)
    */
+  /** The reviewed record from data/ (no live updates), for Admin. */
+  static async getBaseTool(slug: string): Promise<ClinicianToolV4 | null> {
+    await loadV4ToolsFromFiles(true);
+    return baseValidToolsCache?.find((t) => t.slug === slug) ?? null;
+  }
+
+  /** All reviewed records from data/ (no live updates), for Admin. */
+  static async getBaseTools(): Promise<ClinicianToolV4[]> {
+    await loadV4ToolsFromFiles(true);
+    return baseValidToolsCache ?? [];
+  }
+
+  /** Live-update status, for Admin. */
+  static getLiveStatus() {
+    return { version: appliedLiveVersion, created: [...liveCreatedSlugs], overridden: [...liveOverriddenSlugs], errors: lastLiveErrors };
+  }
+
   static clearCache(): void {
+    baseValidToolsCache = null;
+    appliedLiveVersion = null;
     allValidToolsCache = null;
     validToolsBySlugCache = null;
     publishableToolsCache = null;

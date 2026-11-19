@@ -214,6 +214,20 @@ export const ToolAssignmentZ = z.object({
    */
   needsReview: z.boolean().default(false),
   reviewReason: z.string().optional(),
+
+  /**
+   * Placed by "Draft my practice" (the existing engines' top eligible pick),
+   * not chosen by the clinician yet. Cleared when they choose it themselves.
+   * Optional and additive: older builds strip it and keep the assignment.
+   */
+  suggested: z.boolean().optional(),
+
+  /**
+   * Monthly price (cents) the clinician saw when this was chosen, so a later
+   * published price change can be pointed out. Null when no price was known.
+   * Optional and additive.
+   */
+  quotedMonthlyCents: z.number().int().nonnegative().nullable().optional(),
 });
 
 export type ToolAssignment = z.infer<typeof ToolAssignmentZ>;

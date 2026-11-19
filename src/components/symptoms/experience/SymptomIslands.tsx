@@ -9,6 +9,8 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import type { SymptomSource } from "@/domains/symptoms/experience/model";
+import { pathWorkspaceEnabled } from "@/lib/config/feature-flags";
+import { markFirstInteraction, trackPathEvent } from "@/components/path/analytics";
 
 // ---------------------------------------------------------------------------
 // I've noticed this
@@ -46,6 +48,8 @@ function writeNotes(notes: Noted[]) {
   } catch {
     // Private window or blocked storage: notes last for this visit only.
   }
+  // Your Path (header count, workspace) reads this list too.
+  window.dispatchEvent(new CustomEvent("hp:path-change"));
 }
 
 export function NoticedButton({ slug, name }: { slug: string; name: string }) {
@@ -71,8 +75,13 @@ export function NoticedButton({ slug, name }: { slug: string; name: string }) {
     window.print();
   };
 
-  const toggle = () =>
+  const toggle = () => {
+    if (!mine) {
+      trackPathEvent("path_item_saved", { kind: "symptom", surface: "page" });
+      markFirstInteraction("page");
+    }
     update(mine ? notes.filter((n) => n.slug !== slug) : [...notes, { slug, name, duration: null, addedAt: Date.now() }]);
+  };
   const setDuration = (duration: Duration) =>
     update(notes.map((n) => (n.slug === slug ? { ...n, duration } : n)));
 
@@ -111,6 +120,16 @@ export function NoticedButton({ slug, name }: { slug: string; name: string }) {
         </div>
       )}
 
+      {mine && pathWorkspaceEnabled() && (
+        <p className="text-label-secondary mt-4 text-[14px]">
+          Kept in{" "}
+          <Link href="/my-path" className="text-accent hover:text-accent-hover font-medium">
+            your path
+          </Link>
+          , where it becomes part of a brief for your appointment.
+        </p>
+      )}
+
       {notes.length > 0 && (
         <div className="mt-4">
           <button type="button" onClick={() => setShowList((v) => !v)} aria-expanded={showList} className="text-accent hover:text-accent-hover text-[14px] font-medium">
@@ -118,7 +137,7 @@ export function NoticedButton({ slug, name }: { slug: string; name: string }) {
           </button>
           {showList && (
             <div data-notes-print className="border-separator bg-surface mt-3 max-w-md rounded-2xl border p-5 shadow-card-1">
-              <p className="text-label-primary text-[15px] font-semibold">Things you've noticed</p>
+              <p className="text-label-primary text-[15px] font-semibold">Things you&apos;ve noticed</p>
               <ul className="mt-3 space-y-2">
                 {notes.map((n) => (
                   <li key={n.slug} className="flex items-baseline justify-between gap-3 text-[15px]">

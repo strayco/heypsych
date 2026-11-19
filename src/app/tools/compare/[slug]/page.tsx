@@ -18,6 +18,7 @@ import { SITE_CONFIG } from "@/lib/seo/config";
 import { clinicianToolPath } from "@/lib/tools/category-hub-slug";
 import { resolveOutbound } from "@/lib/commercial/outbound";
 import { getJob, jobSlugFor, toHubProduct } from "@/domains/tools/clinician-hub/model";
+import { TrackComparisonView } from "@/components/analytics/TrackComparisonView";
 import { ClinicianCompare, type CompareProduct } from "@/components/tools/clinician/compare/ClinicianCompare";
 import {
   ClinicianToolService,
@@ -228,6 +229,7 @@ export default async function CuratedComparisonPage({ params }: PageProps) {
       {schemas.map((schema, index) => (
         <script key={index} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       ))}
+      <TrackComparisonView kind="clinician-tool" count={products.length} />
       <ClinicianCompare comparison={comparison} products={products} back={back} related={related} />
     </>
   );

@@ -23,6 +23,8 @@ import { pruneDeadLinks } from "@/lib/linking/live-paths";
 import ConditionClientWrapper from "./client-wrapper";
 import { ConditionExperience } from "@/components/conditions/experience/ConditionExperience";
 import { buildConditionExperience } from "@/domains/conditions/experience/model";
+import { conditionFacts } from "@/domains/path/facts";
+import { SYMPTOM_REGISTRY } from "@/domains/symptoms/registry";
 import { getTreatmentsForCondition } from "@/domains/treatments/experience/treatments-for-condition";
 import { getAppsForCondition } from "@/lib/tools/apps-for-condition";
 import { getCategoryBySlug } from "@/lib/config/condition-categories";
@@ -165,6 +167,8 @@ export default async function ConditionPage({ params }: { params: Promise<{ slug
         treatments={await getTreatmentsForCondition(slug)}
         apps={await getAppsForCondition(slug, typeof metadata.category === "string" ? metadata.category : undefined)}
         category={category ? { title: category.displayTitle, href: category.href } : undefined}
+        pathFacts={featureFlags.pathWorkspace ? conditionFacts(content, (entity as { editorial?: unknown }).editorial) : null}
+        relatedSymptoms={SYMPTOM_REGISTRY.filter((sym) => sym.conditionRelationships.some((r) => r.conditionSlug === slug)).map((sym) => sym.slug)}
       />
     );
   } catch (error) {

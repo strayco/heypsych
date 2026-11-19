@@ -34,7 +34,7 @@ const RETRY_DELAY_MS = 1000;
  * Hook to load all V4 products adapted for Architect
  * Automatically paginates through all pages
  */
-export function useArchitectProducts(): UseArchitectProductsResult {
+export function useArchitectProducts(catalogVersion = "0"): UseArchitectProductsResult {
   const [metadataMap, setMetadataMap] = useState<Map<string, ProductArchitectureMetadata>>(new Map());
   const [displayMap, setDisplayMap] = useState<Map<string, ArchitectProductDisplay>>(new Map());
   const [isLoading, setIsLoading] = useState(true);
@@ -52,7 +52,9 @@ export function useArchitectProducts(): UseArchitectProductsResult {
    */
   const fetchPage = useCallback(async (offset: number, retryCount = 0): Promise<ArchitectProductsResponse> => {
     try {
-      const response = await fetch(`/api/architect/products?offset=${offset}&limit=${PAGE_SIZE}`);
+      // `v` is the live catalog version: a published price change gives a new
+      // URL, so the CDN-cached catalog can never be served stale after it.
+      const response = await fetch(`/api/architect/products?offset=${offset}&limit=${PAGE_SIZE}&v=${encodeURIComponent(catalogVersion)}`);
 
       if (!response.ok) {
         throw new Error(`Failed to load products: ${response.status}`);
@@ -69,7 +71,7 @@ export function useArchitectProducts(): UseArchitectProductsResult {
       }
       throw err;
     }
-  }, []);
+  }, [catalogVersion]);
 
   /**
    * Fetch all products (paginated)
@@ -156,7 +158,8 @@ export function useArchitectProducts(): UseArchitectProductsResult {
  * Useful for shortlist panes where you only need subset
  */
 export function useArchitectProductsForCapability(
-  capabilityId: string | null
+  capabilityId: string | null,
+  catalogVersion = "0"
 ): UseArchitectProductsResult {
   const [metadataMap, setMetadataMap] = useState<Map<string, ProductArchitectureMetadata>>(new Map());
   const [displayMap, setDisplayMap] = useState<Map<string, ArchitectProductDisplay>>(new Map());
@@ -183,7 +186,7 @@ export function useArchitectProductsForCapability(
     try {
       // For capability-filtered requests, we can usually get all in one request
       const response = await fetch(
-        `/api/architect/products?capability=${encodeURIComponent(capabilityId)}&limit=${PAGE_SIZE}`
+        `/api/architect/products?capability=${encodeURIComponent(capabilityId)}&limit=${PAGE_SIZE}&v=${encodeURIComponent(catalogVersion)}`
       );
 
       if (!response.ok) {
@@ -210,7 +213,7 @@ export function useArchitectProductsForCapability(
         let hasMore = true;
         while (hasMore) {
           const nextResponse = await fetch(
-            `/api/architect/products?capability=${encodeURIComponent(capabilityId)}&offset=${offset}&limit=${PAGE_SIZE}`
+            `/api/architect/products?capability=${encodeURIComponent(capabilityId)}&offset=${offset}&limit=${PAGE_SIZE}&v=${encodeURIComponent(catalogVersion)}`
           );
 
           if (!nextResponse.ok) break;
@@ -236,7 +239,7 @@ export function useArchitectProductsForCapability(
       setIsLoading(false);
       fetchInProgress.current = false;
     }
-  }, [capabilityId]);
+  }, [capabilityId, catalogVersion]);
 
   useEffect(() => {
     fetchProducts();

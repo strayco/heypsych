@@ -28,8 +28,10 @@ function initializeRedis(): Redis | null {
   }
   rateLimitInitialized = true;
 
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  // Upstash databases created through the Vercel Marketplace may expose the
+  // same credentials as KV_REST_API_URL / KV_REST_API_TOKEN.
+  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
 
   if (!url || !token) {
     return null;

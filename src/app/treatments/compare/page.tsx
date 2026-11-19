@@ -21,6 +21,7 @@ import {
   type ComparisonContext,
 } from "@/lib/comparison/comparison-engine";
 import { ComparePageClient } from "./compare-client";
+import { TrackComparisonView } from "@/components/analytics/TrackComparisonView";
 
 interface PageProps {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -211,6 +212,7 @@ export default async function ComparePage({ searchParams }: PageProps) {
 
   return (
     <Suspense fallback={<ComparisonLoadingSkeleton />}>
+      <TrackComparisonView kind="treatment" count={treatmentArray.length} />
       <ComparePageClient
         initialTreatments={treatmentArray}
         comparison={serializedComparison}

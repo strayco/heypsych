@@ -42,10 +42,15 @@ type AnalyticsValue = string | number | boolean | null;
 /**
  * Track a patient support event
  */
+/** Values that would reveal a crisis. Any event carrying one is not sent. */
+const CRISIS_VALUES = new Set(["crisis", "crisis-support", "immediate-crisis"]);
+
 function trackPatientSupportEvent(
   event: PatientSupportEvent,
   data?: Record<string, AnalyticsValue>
 ): void {
+  // Privacy: never send anything that reveals a crisis or the urgency answer.
+  if (data && Object.values(data).some((v) => typeof v === "string" && CRISIS_VALUES.has(v))) return;
   try {
     track(event, data);
   } catch {
@@ -89,11 +94,11 @@ export function trackSupportJourneyCompleted(
 // ============================================================================
 
 /**
- * Track urgency check completion
- * PRIVACY: Only tracks branch, NOT the specific answer
+ * Track that the urgency question was answered.
+ * PRIVACY: the answer itself (crisis / struggling / planning) is never sent.
  */
-export function trackUrgencyCompleted(branch: "crisis" | "struggling" | "planning"): void {
-  trackPatientSupportEvent("support_urgency_completed", { branch });
+export function trackUrgencyCompleted(): void {
+  trackPatientSupportEvent("support_urgency_completed");
 }
 
 /**
@@ -126,9 +131,11 @@ export function trackStepCompleted(
 export function trackSupportPathShown(
   pathId: SupportPathId,
   alternativeCount: number,
-  confidence: ConfidenceLevel,
-  hadCrisisSignal: boolean
+  confidence: ConfidenceLevel
 ): void {
+  // Nothing that reveals a crisis is ever sent: no crisis flag, and no event
+  // at all when the path shown is crisis support.
+  if (pathId === "crisis-support") return;
   // Map confidence to shorter string for analytics
   const confidenceShort =
     confidence === "clear-path"
@@ -141,7 +148,6 @@ export function trackSupportPathShown(
     pathId,
     alternativeCount,
     confidence: confidenceShort,
-    hadCrisisSignal,
   });
 }
 
@@ -163,6 +169,7 @@ export function trackActionClicked(actionType: string, pathId: SupportPathId): v
  * Track when crisis resources are shown
  * PRIVACY: Only tracks trigger type, NOT user content
  */
-export function trackCrisisShown(trigger: "selection" | "keyword" | "assessment"): void {
-  trackPatientSupportEvent("support_crisis_shown", { trigger });
+export function trackCrisisShown(_trigger: "selection" | "keyword" | "assessment"): void {
+  // PRIVACY (2026-11-19): not sent. Reporting that crisis help was shown
+  // reveals a crisis; kept as a no-op so callers stay unchanged.
 }

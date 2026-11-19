@@ -785,9 +785,14 @@ button:focus-visible {
    LINK STYLES
    ============================================================================ */
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* In the base layer, like Tailwind's preflight, so a colour utility on a
+   link (text-accent, text-white on a dark button…) takes effect. Unlayered,
+   this rule silently overrode every such class site-wide. */
+@layer base {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 /* ============================================================================
@@ -994,6 +999,14 @@ select {
   body[data-print-notes] [data-notes-print] * { visibility: visible; }
   body[data-print-notes] [data-notes-print] { position: absolute; inset: 0 auto auto 0; box-shadow: none; border: 0; }
   body[data-print-notes] [data-notes-print] button { display: none; }
+
+  /* Your Path: print only the appointment brief (a top-level copy). */
+  body[data-print-brief] > :not([data-print-root]) { display: none !important; }
+  body[data-print-brief] [data-brief-print] { box-shadow: none; border: 0; padding: 0; }
+  body[data-print-brief] [data-brief-print] [data-no-print] { display: none; }
 }
 
 
+
+/* Your Path print root is only shown while printing. */
+@media screen { [data-print-root] { display: none; } }

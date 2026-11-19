@@ -79,12 +79,30 @@ describe("ArchitectProductService Publication Safety", () => {
 
     (ClinicianToolService.loadClinicianTools as ReturnType<typeof vi.fn>).mockResolvedValue(mockPublishableTools);
 
-    // Call twice
-    await ArchitectProductService.loadProducts();
-    await ArchitectProductService.loadProducts();
+    // Call twice. The underlying loader is memoised and returns the same array
+    // until a live catalog version is published, so the derived maps must be
+    // reused (no rebuild) while the source array is unchanged.
+    const first = await ArchitectProductService.loadProducts();
+    const second = await ArchitectProductService.loadProducts();
 
-    // Should only call loadClinicianTools once due to caching
-    expect(ClinicianToolService.loadClinicianTools).toHaveBeenCalledTimes(1);
+    expect(second.metadataMap).toBe(first.metadataMap);
+    expect(second.displayMap).toBe(first.displayMap);
+  });
+
+  it("should rebuild when a new live catalog version yields a new source array", async () => {
+    (ClinicianToolService.loadClinicianTools as ReturnType<typeof vi.fn>).mockResolvedValueOnce([
+      createMockClinicianTool("simplepractice", "SimplePractice"),
+    ]);
+    const first = await ArchitectProductService.loadProducts();
+
+    (ClinicianToolService.loadClinicianTools as ReturnType<typeof vi.fn>).mockResolvedValueOnce([
+      createMockClinicianTool("simplepractice", "SimplePractice"),
+      createMockClinicianTool("jane-app", "Jane"),
+    ]);
+    const second = await ArchitectProductService.loadProducts();
+
+    expect(second.metadataMap).not.toBe(first.metadataMap);
+    expect(second.metadataMap.has("jane-app")).toBe(true);
   });
 
   it("should clear cache when clearCache is called", async () => {

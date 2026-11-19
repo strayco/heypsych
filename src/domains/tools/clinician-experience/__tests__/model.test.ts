@@ -78,3 +78,18 @@ describe("formatCents", () => {
     expect(formatCents(123456)).toBe("$1,234.56");
   });
 });
+
+describe("headline claims carry their verification status", () => {
+  it("never prints 'From From' and qualifies unsourced BAA claims, across the catalogue", () => {
+    for (const tool of catalog) {
+      const x = buildClinicianToolExperience(tool, "Category");
+      for (const f of x.facts) expect(f, tool.slug).not.toMatch(/^From\s+from\b/i);
+      const c = tool.compliance as Record<string, unknown> | undefined;
+      if (c?.baa_available === "yes") {
+        const baaFact = x.facts.find((f) => f.startsWith("Signs a BAA"));
+        const sourced = x.compliance.find((i) => i.id === "baa")?.source;
+        expect(baaFact, tool.slug).toBe(sourced ? "Signs a BAA" : "Signs a BAA (vendor-stated)");
+      }
+    }
+  });
+});

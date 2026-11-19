@@ -27,16 +27,16 @@ export interface SupportStartingPoint {
 
 export const SUPPORT_STARTING_POINTS: SupportStartingPoint[] = [
   {
+    id: "support",
+    label: "I'm looking for treatment or support.",
+    leadsTo: "One safety question, then a next step that updates as you answer. About a minute. Your answers stay on this device.",
+    href: "/find-support?need=support",
+  },
+  {
     id: "understand",
     label: "I'm trying to understand what I'm experiencing.",
     leadsTo: "Look up what you're noticing, in plain language.",
     href: "/symptoms",
-  },
-  {
-    id: "support",
-    label: "I'm looking for treatment or support.",
-    leadsTo: "Compare talking to someone, self-guided tools, and medication.",
-    href: "/find-support?need=support",
   },
   {
     id: "someone",
@@ -54,7 +54,7 @@ export const SUPPORT_STARTING_POINTS: SupportStartingPoint[] = [
     id: "tools",
     label: "I'm exploring tools that might help.",
     leadsTo: "Apps and digital tools for things like sleep, stress, and mood.",
-    href: "/tools/for-patients",
+    href: "/tools",
   },
   {
     id: "unsure",
@@ -67,24 +67,26 @@ export const SUPPORT_STARTING_POINTS: SupportStartingPoint[] = [
 export function SupportEntry() {
   return (
     <ul role="list" className="grid gap-3 sm:grid-cols-2">
-      {SUPPORT_STARTING_POINTS.map((point) => (
-        <li key={point.id}>
+      {SUPPORT_STARTING_POINTS.map((point, i) => (
+        <li key={point.id} className={i === 0 ? "sm:col-span-2" : undefined}>
           <Link
             href={point.href}
             onClick={() => trackIntentSelect(`find_support:${point.id}`)}
-            className="group border-separator hover:border-separator-opaque hover:bg-canvas-elevated focus-visible:ring-accent focus-visible:ring-offset-canvas flex h-full items-start justify-between gap-4 rounded-2xl border bg-white px-5 py-4 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            className={`group focus-visible:ring-accent focus-visible:ring-offset-canvas flex h-full items-start justify-between gap-4 rounded-2xl border px-5 py-4 transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none ${
+              i === 0 ? "border-label-primary bg-label-primary sm:py-5" : "border-separator hover:border-separator-opaque hover:bg-canvas-elevated bg-white"
+            }`}
           >
             <span>
-              <span className="text-label-primary block text-[16px] leading-snug font-medium">
+              <span className={`block text-[16px] leading-snug font-medium ${i === 0 ? "text-canvas sm:text-[18px]" : "text-label-primary"}`}>
                 {point.label}
               </span>
-              <span className="text-label-secondary mt-1 block text-[14px] leading-relaxed">
+              <span className={`mt-1 block text-[14px] leading-relaxed ${i === 0 ? "text-canvas/80" : "text-label-secondary"}`}>
                 {point.leadsTo}
               </span>
             </span>
             <span
               aria-hidden="true"
-              className="text-label-tertiary group-hover:text-accent mt-0.5 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none"
+              className={`${i === 0 ? "text-canvas" : "text-label-tertiary group-hover:text-accent"} mt-0.5 transition-transform duration-200 group-hover:translate-x-0.5 motion-reduce:transition-none`}
             >
               →
             </span>

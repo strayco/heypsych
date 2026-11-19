@@ -17,6 +17,7 @@ import {
   Check,
   ExternalLink,
   Info,
+  Sparkles,
   Trash2,
   X,
 } from "lucide-react";
@@ -31,6 +32,7 @@ import {
   type ProductOption,
 } from "@/domains/architect/services/capability-recommendation-service";
 import { MOTION } from "@/domains/architect/world/scene";
+import { trackArchitectEvent } from "@/domains/architect/analytics";
 import type { WorldObjectState } from "@/domains/architect/world/world-state";
 import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
 
@@ -49,6 +51,8 @@ interface ObjectInspectorProps {
   onMarkHandledElsewhere: () => void;
   onMarkNotNeeded: () => void;
   onClearDecision: () => void;
+  /** Keep a "Draft my practice" suggestion as the clinician's choice. */
+  onKeepSuggestion?: (productSlug: string) => void;
 }
 
 export function ObjectInspector({
@@ -65,6 +69,7 @@ export function ObjectInspector({
   onMarkHandledElsewhere,
   onMarkNotNeeded,
   onClearDecision,
+  onKeepSuggestion,
 }: ObjectInspectorProps) {
   const reduceMotion = useReducedMotion();
   const panelRef = useRef<HTMLElement>(null);
@@ -122,6 +127,15 @@ export function ObjectInspector({
       alternativeCount: 2,
     });
   }, [object, metadataMap, displayMap, fingerprint, assignedSlugs]);
+
+  /** The tool now covering this function, to compare each option against. */
+  const currentFor = (slug: string): { slug: string; name: string; cents: number | null; covers: number } | undefined => {
+    const assigned = object?.assignments.find((a) => a.productSlug !== slug);
+    if (!assigned || !recommendation) return undefined;
+    const all = [recommendation.recommended, ...recommendation.alternatives, ...recommendation.others].filter(Boolean) as ProductOption[];
+    const match = all.find((o) => o.productSlug === assigned.productSlug);
+    return { slug: assigned.productSlug, name: assigned.productName, cents: match?.cost.minMonthlyCents ?? null, covers: match ? match.coversRequested.length + match.coversAdditional.length : 0 };
+  };
 
   const transition = reduceMotion
     ? { duration: 0 }
@@ -254,6 +268,8 @@ export function ObjectInspector({
                           ).filter((n) => n !== object.definition.name)}
                           needsReview={assignment.needsReview}
                           reviewReason={assignment.reviewReason}
+                          suggested={assignment.suggested === true}
+                          onKeep={onKeepSuggestion ? () => onKeepSuggestion(assignment.productSlug) : undefined}
                           onRemove={() =>
                             onRemoveProduct(assignment.productSlug)
                           }
@@ -269,6 +285,7 @@ export function ObjectInspector({
                     <SectionHeading>Recommended for your practice</SectionHeading>
                     <OptionCard
                       option={recommendation.recommended}
+                      current={currentFor(recommendation.recommended.productSlug)}
                       displayMap={displayMap}
                       isAssigned={assignedSlugs.includes(
                         recommendation.recommended.productSlug
@@ -290,6 +307,7 @@ export function ObjectInspector({
                         <OptionCard
                           key={option.productSlug}
                           option={option}
+                          current={currentFor(option.productSlug)}
                           displayMap={displayMap}
                           isAssigned={assignedSlugs.includes(
                             option.productSlug
@@ -392,6 +410,8 @@ function AssignedCard({
   alsoCovers,
   needsReview,
   reviewReason,
+  suggested,
+  onKeep,
   onRemove,
 }: {
   name: string;
@@ -399,16 +419,25 @@ function AssignedCard({
   alsoCovers: string[];
   needsReview: boolean;
   reviewReason?: string;
+  suggested?: boolean;
+  onKeep?: () => void;
   onRemove: () => void;
 }) {
   return (
-    <div className="rounded-xl border border-positive/40 bg-positive/5 p-3">
+    <div className={`rounded-xl border p-3 ${suggested ? "border-accent/40 bg-accent/5" : "border-positive/40 bg-positive/5"}`}>
       <div className="flex items-start justify-between gap-2">
         <div className="min-w-0">
-          <span className="inline-flex items-center gap-1 text-xs font-medium text-positive">
-            <Check className="h-3.5 w-3.5" />
-            Selected
-          </span>
+          {suggested ? (
+            <span className="inline-flex items-center gap-1 text-xs font-medium text-accent">
+              <Sparkles className="h-3.5 w-3.5" />
+              Suggested by your draft
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1 text-xs font-medium text-positive">
+              <Check className="h-3.5 w-3.5" />
+              Selected
+            </span>
+          )}
           <p className="mt-0.5 truncate text-sm font-semibold text-label-primary">
             {name}
           </p>
@@ -419,6 +448,16 @@ function AssignedCard({
           )}
           {needsReview && reviewReason && (
             <p className="mt-1 text-xs text-caution-700">{reviewReason}</p>
+          )}
+          {suggested && (
+            <div className="mt-2 flex flex-wrap items-center gap-2">
+              {onKeep && (
+                <button onClick={onKeep} className="rounded-lg bg-label-primary px-3 py-1.5 text-xs font-semibold text-white hover:bg-accent">
+                  Keep it
+                </button>
+              )}
+              <span className="text-xs text-label-secondary">or pick an option below to replace it.</span>
+            </div>
           )}
         </div>
         <button
@@ -436,17 +475,24 @@ function AssignedCard({
 
 function OptionCard({
   option,
+  current,
   displayMap,
   isAssigned,
   emphasis = false,
   onSelect,
 }: {
   option: ProductOption;
+  /** The tool now covering this function, when different from this option. */
+  current?: { slug: string; name: string; cents: number | null; covers: number };
   displayMap: Map<string, ArchitectProductDisplay>;
   isAssigned: boolean;
   emphasis?: boolean;
   onSelect: () => void;
 }) {
+  const verifiedOn = displayMap.get(option.productSlug)?.priceVerifiedOn;
+  const mine = option.cost.minMonthlyCents;
+  const delta = current && current.cents !== null && mine !== null && !option.cost.requiresQuote ? mine - current.cents : null;
+  const coverDelta = current ? option.coversRequested.length + option.coversAdditional.length - current.covers : 0;
   const display = displayMap.get(option.productSlug);
   const category = display?.category as
     | keyof typeof SCHEMA_TO_TAXONOMY_CATEGORY
@@ -493,8 +539,28 @@ function OptionCard({
           <p className="text-sm font-medium text-label-primary">
             {formatCost(option)}
           </p>
+          <p className="text-[11px] text-label-tertiary">
+            {verifiedOn ? `Price checked ${formatDay(verifiedOn)}` : "Price not verified by us"}
+          </p>
         </div>
       </div>
+
+      {/* Against what the practice has now: cost and coverage, never a verdict. */}
+      {current && !isAssigned && (
+        <p className="mt-2 text-xs text-label-secondary">
+          Compared with {current.name}:{" "}
+          {delta === null ? "cost difference unknown" : delta === 0 ? "same listed price" : `${delta > 0 ? "+" : "−"}$${Math.round(Math.abs(delta) / 100)}/mo`}
+          {coverDelta !== 0 && `, covers ${Math.abs(coverDelta)} ${coverDelta > 0 ? "more" : "fewer"} ${Math.abs(coverDelta) === 1 ? "function" : "functions"}`}
+          {" · "}
+          <Link
+            href={`/tools/compare?tools=${current.slug},${option.productSlug}`}
+            onClick={() => trackArchitectEvent("architect_replacement_preview", { productSlug: option.productSlug, previousProductSlug: current.slug })}
+            className="font-medium text-label-primary underline underline-offset-2"
+          >
+            Compare side by side
+          </Link>
+        </p>
+      )}
 
       {/* Why it fits. */}
       {option.reasons.length > 0 && (
@@ -576,6 +642,11 @@ function Badge({
       {children}
     </span>
   );
+}
+
+function formatDay(iso: string): string {
+  const d = new Date(`${iso}T12:00:00Z`);
+  return Number.isNaN(d.getTime()) ? iso : d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
 }
 
 /** Never render a fabricated price. */

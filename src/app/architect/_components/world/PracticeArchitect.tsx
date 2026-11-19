@@ -39,13 +39,42 @@ import { PracticeScene } from "./PracticeScene";
 import { PracticeChecklist } from "./PracticeChecklist";
 import { numberById, numberObjects } from "./object-order";
 import { SetupPlan } from "./SetupPlan";
+import { PlanLedger } from "./PlanLedger";
+import { draftPracticeStack } from "@/domains/architect/services/draft-stack-service";
+import { trackArchitectEvent } from "@/domains/architect/analytics";
+import { markFirstInteraction } from "@/components/path/analytics";
+import { useFlag, useVariant } from "@/lib/live/client";
+import type { ExperimentState, FlagState } from "@/lib/live/config";
+import { COPY, EXPERIMENTS } from "@/lib/live/registry";
+
+/** Live (Admin-managed) nonclinical settings, resolved on the server. */
+export interface ArchitectLive {
+  catalogVersion: string;
+  draftFlag: FlagState;
+  ledgerFlag: FlagState;
+  draftCta: ExperimentState;
+  draftTitle: string;
+  draftBody: string;
+}
+
+const LIVE_DEFAULTS: ArchitectLive = {
+  catalogVersion: "0",
+  draftFlag: { enabled: true, rollout: 100 },
+  ledgerFlag: { enabled: true, rollout: 100 },
+  draftCta: { active: false, variants: EXPERIMENTS[0].variants.map((v) => ({ ...v })) },
+  draftTitle: COPY.find((c) => c.key === "architect.draft.title")!.default,
+  draftBody: COPY.find((c) => c.key === "architect.draft.body")!.default,
+};
 import { WorldList } from "./WorldList";
 import { usePracticeProject } from "./usePracticeProject";
 
 type ViewMode = "world" | "list";
 type Step = "blueprint" | "plan";
 
-export function PracticeArchitect() {
+export function PracticeArchitect({ live = LIVE_DEFAULTS }: { live?: ArchitectLive }) {
+  const draftOn = useFlag(live.draftFlag, "architect.draft-stack");
+  const ledgerOn = useFlag(live.ledgerFlag, "architect.plan-ledger");
+  const draftCta = useVariant(live.draftCta, "architect-draft-cta");
   const {
     project,
     isHydrated,
@@ -61,12 +90,15 @@ export function PracticeArchitect() {
     recordDecision,
     clearDecision,
     setTaskStatus,
+    confirmSuggestions,
+    confirmSuggestion,
+    acknowledgePrice,
     saveNow,
     reset,
   } = usePracticeProject();
 
   const { metadataMap, displayMap, isInitialLoading, error } =
-    useArchitectProducts();
+    useArchitectProducts(live.catalogVersion);
 
   const [selectedObjectId, setSelectedObjectId] =
     useState<WorldObjectId | null>(null);
@@ -185,11 +217,23 @@ export function PracticeArchitect() {
       });
       const capabilityIds = [...requested, ...additional];
 
+      // Replacing a draft suggestion with a different tool is a refinement.
+      const replaced = selectedObject.assignments.find((a) => a.suggested && a.productSlug !== option.productSlug);
+      trackArchitectEvent(replaced ? "architect_product_replace" : "architect_product_add", {
+        productSlug: option.productSlug,
+        previousProductSlug: replaced?.productSlug,
+        capabilityId: requested[0],
+      });
+      if (replaced) removeProductFromCapabilities(replaced.productSlug, selectedObject.definition.capabilityIds);
+
       assignProduct({
         productSlug: option.productSlug,
         productName: option.productName,
         capabilityIds,
         source: "selected",
+        // The clinician chose it, so it is no longer a "Draft my practice" suggestion.
+        suggested: false,
+        quotedMonthlyCents: option.cost.minMonthlyCents,
         // An unresolved evidence question stays attached to the choice.
         needsReview: option.uncertainties.length > 0,
         reviewReason: option.uncertainties[0]?.reason,
@@ -208,7 +252,7 @@ export function PracticeArchitect() {
           .map((o) => o.definition.objectId) ?? []),
       ];
     },
-    [selectedObject, assignProduct, project, metadataMap, applicableCapabilities, world]
+    [selectedObject, assignProduct, removeProductFromCapabilities, project, metadataMap, applicableCapabilities, world]
   );
 
   // Removing a product from an object removes it from that object's
@@ -255,6 +299,68 @@ export function PracticeArchitect() {
 
     for (const capabilityId of targets) clearDecision(capabilityId);
   }, [selectedObject, clearDecision]);
+
+  // Funnel: started, returning visit, plan completed. Counts only.
+  const funnelSent = useRef<{ started?: boolean; visit?: boolean; complete?: string }>({});
+  useEffect(() => {
+    if (!isHydrated || !project) return;
+    if (!project.onboardingComplete && !funnelSent.current.started) {
+      funnelSent.current.started = true;
+      trackArchitectEvent("architect_fingerprint_start", { source: "practice-architect" });
+    }
+    if (project.onboardingComplete && !funnelSent.current.visit) {
+      funnelSent.current.visit = true;
+      try {
+        const today = new Date().toISOString().slice(0, 10);
+        const last = window.localStorage.getItem("hp:architect-visit");
+        window.localStorage.setItem("hp:architect-visit", today);
+        if (last && last !== today) {
+          const days = Math.round((Date.parse(today) - Date.parse(last)) / 86_400_000);
+          const bucket = days <= 1 ? "1" : days <= 7 ? "2-7" : days <= 30 ? "8-30" : "31+";
+          trackArchitectEvent("architect_stack_load", { source: `return:${bucket}`, productsCount: project.assignments.length });
+        }
+      } catch {
+        // storage unavailable
+      }
+    }
+  }, [isHydrated, project]);
+  useEffect(() => {
+    if (!world || !project || !world.isComplete || funnelSent.current.complete === project.id) return;
+    funnelSent.current.complete = project.id;
+    trackArchitectEvent("architect_blueprint_complete", { productsCount: project.assignments.length, blueprintReadyPercent: 100 });
+  }, [world, project]);
+
+  // Draft my practice: the engines' best eligible pick for every function
+  // the practice needs, placed as suggestions the clinician can change.
+  const [draftNote, setDraftNote] = useState<string | null>(null);
+  const draftable = useMemo(() => {
+    if (!project || !fingerprint || metadataMap.size === 0) return 0;
+    const products = [...metadataMap.entries()].map(([slug, metadata]) => ({ metadata, name: displayMap.get(slug)?.name ?? slug }));
+    return draftPracticeStack({ project, fingerprint, products }).picks.length;
+  }, [project, fingerprint, metadataMap, displayMap]);
+  const handleDraft = useCallback(() => {
+    if (!project || !fingerprint || metadataMap.size === 0) return;
+    const products = [...metadataMap.entries()].map(([slug, metadata]) => ({
+      metadata,
+      name: displayMap.get(slug)?.name ?? slug,
+      tagline: displayMap.get(slug)?.tagline,
+    }));
+    const draft = draftPracticeStack({ project, fingerprint, products });
+    markFirstInteraction("architect");
+    for (const pick of draft.picks) assignProduct(pick.assignment);
+    recentlyInstalled.current = world?.objects
+      .filter((o) => o.state === "unconfigured")
+      .map((o) => o.definition.objectId) ?? [];
+    const tools = new Set(draft.picks.map((p) => p.assignment.productSlug)).size;
+    setDraftNote(
+      draft.picks.length === 0
+        ? "Nothing in the catalog fits the open functions yet. Choose them one by one."
+        : `Drafted with ${tools} ${tools === 1 ? "tool" : "tools"}. Every choice is a suggestion: open any function to compare alternatives.${
+            draft.leftOpen.length ? ` Left for you: ${draft.leftOpen.map((l) => l.objectName.toLowerCase()).join(", ")}.` : ""
+          }`
+    );
+    trackArchitectEvent("architect_blueprint_generated", { mode: "build-for-me", productsCount: tools, source: draftCta.id });
+  }, [project, fingerprint, metadataMap, displayMap, assignProduct, world, draftCta.id]);
 
   // --- Render -------------------------------------------------------------
 
@@ -322,6 +428,11 @@ export function PracticeArchitect() {
           </nav>
 
           <div className="flex items-center gap-1.5">
+            {draftOn && draftable > 0 && project.assignments.length > 0 && (
+              <HeaderButton onClick={handleDraft} icon={<Sparkles className="h-3.5 w-3.5" />}>
+                Draft the rest
+              </HeaderButton>
+            )}
             <HeaderButton
               onClick={() => setEditingProfile(true)}
               icon={<Pencil className="h-3.5 w-3.5" />}
@@ -431,22 +542,21 @@ export function PracticeArchitect() {
           <SetupPlan
             project={project}
             world={world}
+            cost={costSummary}
+            displayMap={displayMap}
             onSetTaskStatus={setTaskStatus}
           />
         ) : viewMode === "world" ? (
           <div className="mx-auto grid w-full max-w-[1600px] gap-5 px-2 py-4 sm:px-5 xl:grid-cols-[minmax(0,1fr)_320px] xl:items-start">
             <div>
-              {world.resolvedCount === 0 && (
-                <p className="mb-3 flex items-center gap-2 px-1 text-[14px] text-label-secondary">
-                  <span
-                    aria-hidden="true"
-                    className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-bold text-white"
-                  >
-                    1
-                  </span>
-                  Click a numbered marker to choose a tool for that part of your
-                  practice.
-                </p>
+              {world.resolvedCount === 0 ? (
+                draftOn && <DraftBanner disabled={metadataMap.size === 0} onDraft={handleDraft} title={live.draftTitle} body={live.draftBody} cta={draftCta.value} />
+              ) : (
+                draftNote && (
+                  <p role="status" className="mb-3 rounded-xl bg-accent-tint px-4 py-2.5 text-[14px] text-label-primary">
+                    {draftNote}
+                  </p>
+                )
               )}
               {/* The room is framed to the viewport, so the whole practice is
                   visible at once. Scrolling to find your own office defeats
@@ -464,6 +574,19 @@ export function PracticeArchitect() {
               </div>
             </div>
 
+            <div className="space-y-4">
+            {ledgerOn && (
+              <PlanLedger
+                project={project}
+                world={world}
+                cost={costSummary}
+                onSelectObject={setSelectedObjectId}
+                onOpenPlan={() => setStep("plan")}
+                onConfirmSuggestions={confirmSuggestions}
+                displayMap={displayMap}
+                onAcknowledgePrice={acknowledgePrice}
+              />
+            )}
             <PracticeChecklist
               world={world}
               numbered={numbered}
@@ -472,8 +595,27 @@ export function PracticeArchitect() {
               onSelectObject={setSelectedObjectId}
               onHoverObject={setHoveredObjectId}
             />
+            </div>
           </div>
         ) : (
+          <div className="mx-auto w-full max-w-[1600px] space-y-4 px-2 pt-4 sm:px-5">
+            {world.resolvedCount === 0 ? (
+              draftOn && <DraftBanner disabled={metadataMap.size === 0} onDraft={handleDraft} title={live.draftTitle} body={live.draftBody} cta={draftCta.value} />
+            ) : ledgerOn && (
+              <PlanLedger
+                project={project}
+                world={world}
+                cost={costSummary}
+                onSelectObject={setSelectedObjectId}
+                onOpenPlan={() => setStep("plan")}
+                onConfirmSuggestions={confirmSuggestions}
+                displayMap={displayMap}
+                onAcknowledgePrice={acknowledgePrice}
+              />
+            )}
+          </div>
+        )}
+        {step === "blueprint" && viewMode === "list" && (
           <WorldList
             world={world}
             selectedObjectId={selectedObjectId}
@@ -496,6 +638,10 @@ export function PracticeArchitect() {
         onMarkHandledElsewhere={handleMarkHandledElsewhere}
         onMarkNotNeeded={handleMarkNotNeeded}
         onClearDecision={handleClearDecision}
+        onKeepSuggestion={(slug) => {
+          confirmSuggestion(slug);
+          trackArchitectEvent("architect_recommendation_accepted", { productSlug: slug, recommendationType: "primary" });
+        }}
       />
     </div>
   );
@@ -522,6 +668,26 @@ function HeaderButton({
       {icon}
       {children}
     </button>
+  );
+}
+
+function DraftBanner({ onDraft, disabled, title, body, cta }: { onDraft: () => void; disabled: boolean; title: string; body: string; cta: string }) {
+  return (
+    <div className="mb-3 flex flex-col gap-3 rounded-2xl border border-separator bg-surface p-4 shadow-card-1 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p className="text-[16px] font-semibold text-label-primary">{title}</p>
+        <p className="mt-0.5 text-[14px] text-label-secondary">{body}</p>
+      </div>
+      <button
+        type="button"
+        onClick={onDraft}
+        disabled={disabled}
+        className="inline-flex min-h-11 shrink-0 items-center gap-2 rounded-full bg-label-primary px-5 text-[15px] font-medium text-white transition-colors hover:bg-accent disabled:opacity-40"
+      >
+        <Sparkles className="h-4 w-4" />
+        {disabled ? "Loading tools…" : cta}
+      </button>
+    </div>
   );
 }
 

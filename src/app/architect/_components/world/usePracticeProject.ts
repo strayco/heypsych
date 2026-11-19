@@ -62,6 +62,12 @@ export interface UsePracticeProjectResult {
   ) => void;
   clearDecision: (capabilityId: CapabilityId) => void;
   setTaskStatus: (taskId: string, status: "todo" | "in-progress" | "done") => void;
+  /** Keep every "Draft my practice" suggestion as the clinician's own choice. */
+  confirmSuggestions: () => void;
+  /** Keep one suggestion. */
+  confirmSuggestion: (productSlug: string) => void;
+  /** Accept the current price as the one the clinician has seen. */
+  acknowledgePrice: (productSlug: string, monthlyCents: number | null) => void;
 
   /** Force an immediate save, for an explicit Save action. */
   saveNow: () => void;
@@ -340,6 +346,27 @@ export function usePracticeProject(): UsePracticeProjectResult {
     URL.revokeObjectURL(url);
   }, []);
 
+  const confirmSuggestion = useCallback((productSlug: string) => {
+    mutate((prev) => ({
+      ...prev,
+      assignments: prev.assignments.map((a) => (a.productSlug === productSlug ? { ...a, suggested: false } : a)),
+    }));
+  }, [mutate]);
+
+  const acknowledgePrice = useCallback((productSlug: string, monthlyCents: number | null) => {
+    mutate((prev) => ({
+      ...prev,
+      assignments: prev.assignments.map((a) => (a.productSlug === productSlug ? { ...a, quotedMonthlyCents: monthlyCents } : a)),
+    }));
+  }, [mutate]);
+
+  const confirmSuggestions = useCallback(() => {
+    mutate((prev) => ({
+      ...prev,
+      assignments: prev.assignments.map((a) => (a.suggested ? { ...a, suggested: false } : a)),
+    }));
+  }, [mutate]);
+
   return {
     project,
     isHydrated,
@@ -358,6 +385,9 @@ export function usePracticeProject(): UsePracticeProjectResult {
     recordDecision,
     clearDecision,
     setTaskStatus,
+    confirmSuggestions,
+    confirmSuggestion,
+    acknowledgePrice,
     saveNow,
     reset,
   };

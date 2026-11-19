@@ -14,7 +14,13 @@ import { Pool } from 'pg';
  * Download the certificate from: Supabase Dashboard → Settings → Database → SSL Certificate
  * https://supabase.com/docs/guides/platform/ssl-enforcement
  */
-function getSslConfig(): { rejectUnauthorized: boolean; ca?: string } {
+function getSslConfig(): false | { rejectUnauthorized: boolean; ca?: string } {
+  // Local development and CI against a non-SSL Postgres only. Never set in
+  // production: Supabase requires SSL.
+  if (process.env.DATABASE_SSL === 'disable' && process.env.VERCEL !== '1') {
+    return false;
+  }
+
   // Check for CA certificate file path (lazy-load fs to avoid bundling issues)
   const caPath = process.env.DATABASE_CA_PATH || process.env.SUPABASE_CA_PATH;
   if (caPath) {

@@ -29,6 +29,8 @@ export interface ArchitectProductDisplay {
   categoryLabel: string;
   logoUrl?: string;
   websiteUrl?: string;
+  /** YYYY-MM-DD when HeyPsych last checked the vendor's pricing page; absent = unverified. */
+  priceVerifiedOn?: string;
   isDemo: false; // Real products are never demo
 }
 
@@ -66,6 +68,7 @@ function createProductDisplay(tool: ClinicianToolV4): ArchitectProductDisplay {
     categoryLabel: CATEGORY_LABELS[tool.primary_category] || tool.primary_category,
     logoUrl: tool.logo_url,
     websiteUrl: tool.website_url,
+    priceVerifiedOn: tool.pricing?.last_verified,
     isDemo: false,
   };
 }
@@ -77,6 +80,7 @@ function createProductDisplay(tool: ClinicianToolV4): ArchitectProductDisplay {
 let metadataMapCache: Map<string, ProductArchitectureMetadata> | null = null;
 let displayMapCache: Map<string, ArchitectProductDisplay> | null = null;
 let toolsArrayCache: ClinicianToolV4[] | null = null;
+let sourceArray: ClinicianToolV4[] | null = null;
 
 // ============================================================================
 // SERVICE
@@ -95,18 +99,22 @@ export class ArchitectProductService {
     displayMap: Map<string, ArchitectProductDisplay>;
     tools: ClinicianToolV4[];
   }> {
-    // Return cached if available
-    if (metadataMapCache && displayMapCache && toolsArrayCache) {
+    // PUBLICATION SAFETY: Only load publishable tools (not drafts)
+    // This applies the same publication gate as public clinician pages.
+    // The service returns the same array until a live update is published,
+    // so its identity tells us when to rebuild (single source of truth:
+    // a published price reaches Architect and cost estimates here).
+    const publishable = await ClinicianToolService.loadClinicianTools();
+
+    // Return cached if built from this exact catalog
+    if (metadataMapCache && displayMapCache && toolsArrayCache && sourceArray === publishable) {
       return {
         metadataMap: metadataMapCache,
         displayMap: displayMapCache,
         tools: toolsArrayCache,
       };
     }
-
-    // PUBLICATION SAFETY: Only load publishable tools (not drafts)
-    // This applies the same publication gate as public clinician pages
-    const publishable = await ClinicianToolService.loadClinicianTools();
+    sourceArray = publishable;
 
     // IDENTITY SAFETY: collapse alias records to one entry per real product.
     // Without this a clinician can select both halves of a duplicated record

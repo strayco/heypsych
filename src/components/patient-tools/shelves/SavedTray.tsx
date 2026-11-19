@@ -7,6 +7,7 @@
  */
 
 import Link from "next/link";
+import { pathWorkspaceEnabled } from "@/lib/config/feature-flags";
 import { useEffect, useState } from "react";
 import { useSavedApps } from "./saved";
 
@@ -87,6 +88,11 @@ export function SavedTray() {
                 className="bg-label-primary hover:bg-accent mt-4 flex w-full items-center justify-center rounded-full px-5 py-3 text-[15px] font-medium text-white transition-colors"
               >
                 Compare {nameOf(chosen[0])} and {nameOf(chosen[1])} →
+              </Link>
+            )}
+            {pathWorkspaceEnabled() && (
+              <Link href="/my-path#apps" className="text-accent hover:text-accent-hover mt-3 block text-center text-[14px] font-medium">
+                See them in your path
               </Link>
             )}
           </div>

@@ -106,6 +106,7 @@ export function PracticeChecklist({
                               resolved ? "text-label-secondary" : "text-accent"
                             }`}
                           >
+                            {object.assignments.some((a) => a.suggested) && "Suggested: "}
                             {describeObjectStatus(object)}
                           </span>
                         </span>

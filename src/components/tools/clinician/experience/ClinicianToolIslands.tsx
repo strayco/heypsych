@@ -165,7 +165,7 @@ export function PricingExplorer({ pricing }: { pricing: ClinicianToolExperience[
             <div className="border-separator mt-5 flex flex-wrap gap-x-4 gap-y-1 border-t pt-4 text-[13px]">
               {pricing.trialDays > 0 && <span className="text-label-secondary">{pricing.trialDays}-day free trial</span>}
               {pricing.freeTier && <span className="text-label-secondary">Free plan</span>}
-              {pricing.lastVerified && <span className="text-label-tertiary">Prices checked {pricing.lastVerified}</span>}
+              {pricing.lastVerified ? <span className="text-label-tertiary">Prices checked {pricing.lastVerified}</span> : <span className="text-label-tertiary">Price not yet checked by HeyPsych. Confirm with the vendor.</span>}
               {pricing.url && (
                 <a href={pricing.url} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
                   Vendor pricing ↗
@@ -182,7 +182,7 @@ export function PricingExplorer({ pricing }: { pricing: ClinicianToolExperience[
           {pricing.model && <p className="text-label-secondary mt-2 text-[15px]">{pricing.model}</p>}
           <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[13px]">
             {pricing.trialDays > 0 && <span className="text-label-secondary">{pricing.trialDays}-day free trial</span>}
-            {pricing.lastVerified && <span className="text-label-tertiary">Prices checked {pricing.lastVerified}</span>}
+            {pricing.lastVerified ? <span className="text-label-tertiary">Prices checked {pricing.lastVerified}</span> : <span className="text-label-tertiary">Price not yet checked by HeyPsych. Confirm with the vendor.</span>}
             {pricing.url && (
               <a href={pricing.url} target="_blank" rel="noopener noreferrer" className="text-accent hover:underline">
                 Vendor pricing ↗

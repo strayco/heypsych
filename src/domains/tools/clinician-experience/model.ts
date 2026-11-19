@@ -269,10 +269,12 @@ export function buildClinicianToolExperience(
     .filter((s) => s.note);
 
   const facts = [
-    p?.starting_price_display ? `From ${p.starting_price_display}` : p?.quote_required ? "Pricing by quote" : null,
+    // Some records already say "From $39/month"; don't print "From From".
+    p?.starting_price_display ? `From ${p.starting_price_display.replace(/^from\s+/i, "")}` : p?.quote_required ? "Pricing by quote" : null,
     p?.model ? MODEL_LABELS[p.model] ?? plain(p.model) : null,
     (p?.free_trial_days ?? 0) > 0 ? `${p!.free_trial_days}-day trial` : p?.free_tier ? "Free plan" : null,
-    c?.baa_available === "yes" ? "Signs a BAA" : c?.baa_available === "no" ? "No BAA" : null,
+    // Headline claims carry their status: unsourced BAA claims say so.
+    c?.baa_available === "yes" ? (provenance(c?.baa_provenance) ? "Signs a BAA" : "Signs a BAA (vendor-stated)") : c?.baa_available === "no" ? "No BAA" : null,
     epcsClaimed ? EPCS_UNVERIFIED_HEADLINE : null,
   ].filter((f): f is string => Boolean(f));
 

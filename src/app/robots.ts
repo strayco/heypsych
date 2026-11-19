@@ -12,7 +12,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/debug", "/test-env"],
+        disallow: ["/api/", "/debug", "/test-env", "/my-path"],
         crawlDelay: 1,
       },
       // AI bots: Allow with polite crawl delay for LLM training/grounding

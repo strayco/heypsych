@@ -167,27 +167,37 @@ function TreatmentChips({ title, list }: { title: string; list: TreatmentForCond
 export function HelpChecklist({ items, storageKey }: { items: string[]; storageKey: string }) {
   const [done, setDone] = useState<Set<number>>(new Set());
 
+  // Stored as the strategies' text, so Your Path can list what was tried
+  // without the page. Older visits stored positions; those are read and
+  // rewritten as text.
   useEffect(() => {
     try {
       const saved = JSON.parse(window.localStorage.getItem(storageKey) ?? "[]");
-      if (Array.isArray(saved)) setDone(new Set(saved.filter((n) => typeof n === "number")));
+      if (!Array.isArray(saved)) return;
+      const indices = saved
+        .map((v) => (typeof v === "number" ? v : typeof v === "string" ? items.indexOf(v) : -1))
+        .filter((n) => n >= 0 && n < items.length);
+      setDone(new Set(indices));
+      if (saved.some((v) => typeof v === "number")) {
+        window.localStorage.setItem(storageKey, JSON.stringify(indices.map((n) => items[n])));
+      }
     } catch {
       // Private window or blocked storage: start empty.
     }
-  }, [storageKey]);
+  }, [storageKey, items]);
 
   const toggle = (i: number) => {
-    setDone((prev) => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i);
-      else next.add(i);
-      try {
-        window.localStorage.setItem(storageKey, JSON.stringify([...next]));
-      } catch {
-        // Ignore; the ticks just will not persist.
-      }
-      return next;
-    });
+    const next = new Set(done);
+    if (next.has(i)) next.delete(i);
+    else next.add(i);
+    setDone(next);
+    try {
+      if (next.size === 0) window.localStorage.removeItem(storageKey);
+      else window.localStorage.setItem(storageKey, JSON.stringify([...next].sort((a, b) => a - b).map((n) => items[n])));
+      window.dispatchEvent(new CustomEvent("hp:path-change"));
+    } catch {
+      // Ignore; the ticks just will not persist.
+    }
   };
 
   return (

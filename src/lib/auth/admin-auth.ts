@@ -204,7 +204,8 @@ export async function validateBodySize(
 export function requireRateLimitingInProduction(): AuthResult | null {
   const isProduction = process.env.NODE_ENV === "production";
   const hasRateLimiting = !!(
-    process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+    (process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL) &&
+    (process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN)
   );
 
   if (isProduction && !hasRateLimiting) {

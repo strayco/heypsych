@@ -224,9 +224,8 @@ export interface PatientJourneyEvents {
     source: "homepage" | "nav" | "direct";
   };
 
-  urgency_check_completed: {
-    branch: "crisis" | "struggling" | "planning";
-  };
+  // The urgency answer is never sent (privacy, 2026-11-19).
+  urgency_check_completed: Record<string, never>;
 
   concerns_selected: {
     count: number;
@@ -241,7 +240,6 @@ export interface PatientJourneyEvents {
     pathId: SupportPathId;
     alternativeCount: number;
     confidence: "clear" | "reasonable" | "exploration";
-    hadCrisisSignal: boolean;
   };
 
   next_action_clicked: {

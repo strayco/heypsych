@@ -115,7 +115,7 @@ function ObjectRow({
         <span className="block truncate text-xs text-label-secondary">
           {unresolved
             ? object.definition.description
-            : describeObjectStatus(object)}
+            : `${object.assignments.some((a) => a.suggested) ? "Suggested: " : ""}${describeObjectStatus(object)}`}
         </span>
       </span>
 

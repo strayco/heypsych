@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { siteConfig, getActiveNavigation } from "@/lib/config/site";
 import { Wordmark } from "@/components/brand/Wordmark";
+import { PathIndicator } from "@/components/path/PathIndicator";
 import {
   Menu,
   X,
@@ -112,6 +113,7 @@ export function Header() {
 
           {/* Search and Actions */}
           <div className="flex items-center gap-3">
+            <PathIndicator />
             {/* Desktop Search */}
             <div className="relative hidden sm:flex">
               <form onSubmit={handleSearchSubmit} role="search" action="/search" method="get">
@@ -185,6 +187,8 @@ export function Header() {
                     <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-3.5 h-4 w-4 text-label-tertiary" />
                   </form>
                 </div>
+
+                <PathIndicator variant="menu" onNavigate={() => setIsMobileMenuOpen(false)} />
 
                 {/* Mobile Navigation Links */}
                 {activeNavigation.map((item) => {

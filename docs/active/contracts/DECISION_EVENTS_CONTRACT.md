@@ -89,7 +89,6 @@ decision_result_shown: {
   coverageBucket?: '0-25' | '26-50' | '51-75' | '76-100',
   budgetStatus?: 'within' | 'over' | 'unknown',
   // Patient-specific
-  hadCrisisSignal?: boolean
 }
 ```
 
@@ -367,6 +366,72 @@ Filter by `decisionType` to compare patient vs clinician funnels.
 
 ---
 
-*Document version: 0.2.0*
+## Your Path events (2026-11-18)
+
+Source: `src/components/path/analytics.ts`. Your Path is stored only in the
+visitor's browser; events say *that* something happened, never *what*.
+
+| Event | Properties | Never included |
+|---|---|---|
+| `path_item_saved` / `path_item_removed` | `kind`: condition, treatment, question | slug, name, question text |
+| `path_opened` | `surface`, `items` (bucket 0 / 1-2 / 3-5 / 6+) | item list |
+| `path_next_step_kept` | `kind: next-step`, `surface: journey` | answers (path id is already in `support_path_shown`) |
+| `path_brief_printed` / `path_brief_copied` | `surface` | brief content |
+| `path_resume_clicked` | `surface: homepage` | — |
+| `path_cleared` | `surface` | — |
+| `path_qualified_action` | `surface` (journey, workspace), `kind: next-step` | destination, answers |
+| `path_returned` | `days` (1 / 2-7 / 8-30 / 31+), `items` bucket | dates, item list |
+
+Architect (existing events reused): `architect_blueprint_generated`
+`{mode: "build-for-me", productsCount}` on "Draft my practice";
+`architect_stack_export {productsCount}` on printing the practice plan;
+`architect_product_drawer_open {productSlug, source: "practice-plan"}` from
+plan rows. Product slugs are clinician software, not health data.
+
+Decision completion (patient): `path_next_step_kept`. Qualified conversion:
+`path_qualified_action` per kept or shown step. Return: `path_returned`.
+Time on site is not a success measure.
+
+Suggested measures: brief-print rate per `support_path_shown`; return rate
+(sessions with `path_opened` from `header` or `homepage`). Neither is a
+"confidence lift", which remains user-reported (§ Clarity).
+
+
+## Launch funnel and North Star (2026-11-19)
+
+Discover → Interact → Understand → Decide → Save → Return → Act. Every event
+below says *that* a step happened. Consumer properties are limited by type
+(`src/components/path/analytics.ts`) to a category (`kind`), count and day
+buckets, and a surface name: no slugs, answers, symptoms, treatment
+selections or question text can be sent.
+
+| Step | Consumer event | Clinician event |
+|---|---|---|
+| Interact | `first_meaningful_interaction {surface}` (once per browser session) | `architect_fingerprint_start {source}` |
+| Understand | `comparison_viewed {kind, items bucket}`; `path_comparison_viewed {items}`; `support_path_shown` (existing) | `architect_blueprint_generated {mode, productsCount, source: CTA variant}`; `architect_replacement_preview {productSlug, previousProductSlug}`; `comparison_viewed {kind: "clinician-tool", items bucket}` |
+| Decide | `path_next_step_kept` (decision kept) | `architect_recommendation_accepted {productSlug}` (suggestion kept); `architect_product_replace` / `architect_product_add` |
+| Save | `path_item_saved {kind}` | `architect_blueprint_complete {productsCount}` (every function decided) |
+| Brief / export | `path_brief_viewed`, `path_brief_printed`, `path_brief_copied` | `architect_stack_export {productsCount, source?: "text"}` |
+| Return | `path_returned {days, items}` | `architect_stack_load {source: "return:<days bucket>", productsCount}` |
+| Act | `path_qualified_action {surface, kind}` | `architect_vendor_visit {productSlug, isSponsored, source: "profile-visit" | "profile-pricing" | (Architect: none)}` |
+| Experiments | `experiment_exposed {experiment, variant}` (once per browser) | same |
+
+`path_item_saved {kind: "symptom"}` records that *a* symptom was saved, never
+which one. Product slugs are clinician software, not health data.
+
+**North Star: meaningful decisions completed per active user (weekly).**
+
+- Numerator: `path_next_step_kept` + `architect_recommendation_accepted` +
+  `architect_product_replace` + `architect_product_add` + `architect_blueprint_complete`.
+- Denominator: distinct browsers with `first_meaningful_interaction` or
+  `architect_fingerprint_start` in the week.
+- Guardrails: crisis-path views are never counted as a decision or a
+  conversion; time on site is not a success measure; experiments may change
+  wording and presentation only, never what is recommended.
+
+---
+
+*Document version: 0.4.0*
 *Created: 2025-09-02*
 *Updated: 2026-09-02 (Phase 6: Session context and attribution)*
+*Updated: 2026-11-19 (Launch funnel and North Star)*

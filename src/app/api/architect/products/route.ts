@@ -120,12 +120,29 @@ export async function GET(request: NextRequest): Promise<NextResponse<ArchitectP
       hasMore: offset + products.length < total,
     });
 
-    // Products come from data/tools-v4 files, which only change on deploy, and
-    // Vercel purges the CDN on every deploy. So the edge can hold this for a
-    // day; it was 5 minutes, which re-ran the function for most Architect visits.
+    // Products come from data/tools-v4 files (which change only on deploy, and
+    // Vercel purges the CDN on every deploy) plus published live overlays (see
+    // below). So the edge can hold this for a day; it was 5 minutes, which
+    // re-ran the function for most Architect visits.
     // In development: no caching, so edits show up immediately.
+    //
+    // Live updates: the Architect page asks for ?v=<live catalog version>, so a
+    // published price change gets a new URL and the old CDN entry is never used.
+    // Only cache at the edge when the data served IS that version. If a request
+    // names another version (the page or the data cache is mid-refresh after a
+    // publish), keep the edge copy to 60s so stale data can't sit under the new URL for a day.
+    const servedVersion = ClinicianToolService.getLiveStatus().version ?? "0";
+    const requestedVersion = searchParams.get("v");
+    response.headers.set("X-Catalog-Version", servedVersion);
     if (isDev) {
       response.headers.set("Cache-Control", "no-store, no-cache, must-revalidate");
+    } else if (requestedVersion !== null && requestedVersion !== servedVersion) {
+      // Mid-refresh after a publish (seconds). A short edge copy bounds both
+      // staleness and function runs; no-store would run the function per visit.
+      response.headers.set("Cache-Control", "public, s-maxage=60");
+    } else if (requestedVersion === null) {
+      // Un-versioned URL can't be busted by a publish: keep the edge copy short.
+      response.headers.set("Cache-Control", "public, s-maxage=300, stale-while-revalidate=600");
     } else {
       response.headers.set(
         "Cache-Control",

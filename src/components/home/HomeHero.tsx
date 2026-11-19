@@ -17,7 +17,7 @@ import { PatientWorldScene } from "./worlds/PatientWorldScene";
 import { ClinicianWorldScene } from "./worlds/ClinicianWorldScene";
 import styles from "./worlds/worlds.module.css";
 
-export function HomeHero() {
+export function HomeHero({ subtitle = "Find the support you need. Or build the practice you imagine." }: { subtitle?: string }) {
   return (
     <section
       aria-labelledby="home-heading"
@@ -34,7 +34,7 @@ export function HomeHero() {
             A little clarity changes everything.
           </h1>
           <p className="text-label-secondary mx-auto mt-3 max-w-xl text-[16px] leading-relaxed sm:mt-4 sm:text-[19px]">
-            Find the support you need. Or build the practice you imagine.
+            {subtitle}
           </p>
         </div>
 

@@ -15,6 +15,8 @@ import type { TreatmentForCondition } from "@/domains/treatments/experience/trea
 import { ApproachExplorer, HelpChecklist, QuoteCarousel, SymptomExplorer } from "./ConditionIslands";
 import type { ConditionApps } from "@/lib/tools/apps-for-condition";
 import { ToolMark } from "@/components/tools/ToolMark";
+import { SaveToPath } from "@/components/path/SaveToPath";
+import type { ConditionFacts } from "@/domains/path";
 
 function Section({ id, title, intro, children }: { id: string; title: string; intro?: string; children: React.ReactNode }) {
   return (
@@ -51,6 +53,8 @@ export function ConditionExperience({
   treatments,
   category,
   apps = null,
+  pathFacts = null,
+  relatedSymptoms = [],
 }: {
   slug: string;
   experience: Model;
@@ -58,6 +62,10 @@ export function ConditionExperience({
   category?: { title: string; href: string };
   /** Apps and online care for this condition (Apps & Tools bridge). */
   apps?: ConditionApps | null;
+  /** Facts for "Save to your path"; null hides the control (flag off or no record). */
+  pathFacts?: ConditionFacts | null;
+  /** Symptom slugs whose guides describe this condition, for Your Path connections. */
+  relatedSymptoms?: string[];
 }) {
   const Books = DISCOVERY_OBJECTS.conditions;
 
@@ -102,9 +110,10 @@ export function ConditionExperience({
                 ))}
               </ul>
             )}
+            {pathFacts && <SaveToPath kind="condition" slug={slug} name={x.name} facts={pathFacts} relatedSymptoms={relatedSymptoms} />}
             <p className="text-label-tertiary mt-5 text-[13px]">
               Reviewed by the{" "}
-              <Link href="/about/medical-review-board" className="text-accent hover:underline">
+              <Link href="/about/medical-review-board" className="text-accent underline decoration-accent/40 underline-offset-2 hover:decoration-accent">
                 HeyPsych Medical Review Board
               </Link>
             </p>

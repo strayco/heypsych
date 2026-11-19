@@ -4,6 +4,8 @@ import { DiscoveryNavigation } from "@/components/home/DiscoveryNavigation";
 import { TrustEditorial } from "@/components/home/TrustEditorial";
 import { TaxonomyHero } from "@/components/home/TaxonomyHero";
 import { featureFlags } from "@/lib/config/feature-flags";
+import { ResumePath } from "@/components/path/ResumePath";
+import { getLiveConfig } from "@/lib/live/state";
 
 // SEO-optimized metadata - Decision platform positioning
 export const metadata: Metadata = {
@@ -81,7 +83,9 @@ const websiteSchema = {
  * Rollback: with NAVIGATION_INVERSION=false the taxonomy-first hero returns
  * in place of the worlds.
  */
-export default function HomePage() {
+export default async function HomePage() {
+  // Admin-managed nonclinical copy and flags (cached; regenerated on publish).
+  const live = await getLiveConfig();
   return (
     <>
       {/* JSON-LD Schemas for SEO */}
@@ -95,7 +99,9 @@ export default function HomePage() {
       />
 
       <div className="bg-canvas">
-        {featureFlags.navigationInversion ? <HomeHero /> : <TaxonomyHero />}
+        {featureFlags.navigationInversion ? <HomeHero subtitle={live.copy["home.hero.subtitle"]} /> : <TaxonomyHero />}
+        {/* Returning visitors: picks up their path. Renders nothing otherwise. */}
+        <ResumePath flag={live.flags["home.resume-strip"]} />
         <DiscoveryNavigation />
         <TrustEditorial />
       </div>

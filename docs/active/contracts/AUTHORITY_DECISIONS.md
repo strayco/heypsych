@@ -390,3 +390,13 @@ Record decisions here as they are made:
 
 *Document version: 0.1.0-draft*
 *Created: 2025-09-02*
+
+---
+
+## Recorded decisions
+
+| Date | Decision | By |
+|---|---|---|
+| 2026-11-19 | Patient journey guidance (evaluator routing, "what would change it", brief questions) is covered by the existing clinical review and authorized for launch (PATIENT_PILOT_CONTRACT §12.3). | Founder |
+| 2026-11-19 | `hadCrisisSignal` removed from analytics; nothing that reveals a crisis is sent. | Release (per founder instruction) |
+

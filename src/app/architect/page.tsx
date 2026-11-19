@@ -10,6 +10,7 @@
 import { Metadata } from "next";
 import { siteConfig } from "@/lib/config/site";
 import { PracticeArchitect } from "./_components/world/PracticeArchitect";
+import { getLiveConfig, getLiveTools } from "@/lib/live/state";
 
 const canonicalUrl = `${siteConfig.url}/architect`;
 
@@ -40,6 +41,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ArchitectPage() {
-  return <PracticeArchitect />;
+/**
+ * Server render passes the live catalog version (so the products API URL
+ * changes when a price is published, and the CDN serves the new catalog) and
+ * the live nonclinical config. Both are tagged cached reads: this page is
+ * regenerated only when one of them is published.
+ */
+export default async function ArchitectPage() {
+  const [tools, config] = await Promise.all([getLiveTools(), getLiveConfig()]);
+  return (
+    <PracticeArchitect
+      live={{
+        catalogVersion: tools.version,
+        draftFlag: config.flags["architect.draft-stack"],
+        ledgerFlag: config.flags["architect.plan-ledger"],
+        draftCta: config.experiments["architect-draft-cta"],
+        draftTitle: config.copy["architect.draft.title"],
+        draftBody: config.copy["architect.draft.body"],
+      }}
+    />
+  );
 }

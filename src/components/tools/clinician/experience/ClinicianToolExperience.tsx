@@ -21,6 +21,7 @@ import { provenanceLabel } from "@/domains/tools/clinician-experience/model";
 import type { SpecializedRecommendation } from "@/lib/tools/alternatives";
 import { FitExplorer, PricingExplorer } from "./ClinicianToolIslands";
 import type { Outbound } from "@/lib/commercial/outbound";
+import { TrackedOutboundLink } from "@/components/tools/clinician/TrackedOutboundLink";
 
 function Section({ id, title, intro, children }: { id: string; title: string; intro?: string; children: React.ReactNode }) {
   return (
@@ -111,14 +112,14 @@ export function ClinicianToolExperience({
 
             <div className="mt-6 flex flex-wrap items-center gap-3">
               {visit && (
-                <a href={visit.href} target="_blank" rel={visit.rel} className="bg-label-primary text-white rounded-full px-5 py-2.5 text-[15px] font-medium">
+                <TrackedOutboundLink href={visit.href} rel={visit.rel} productSlug={slug} kind="visit" partner={visit.partner} className="bg-label-primary text-white rounded-full px-5 py-2.5 text-[15px] font-medium">
                   Visit {x.name} <span aria-hidden="true">↗</span>
-                </a>
+                </TrackedOutboundLink>
               )}
               {x.pricing.url && (
-                <a href={x.pricing.url} target="_blank" rel="noopener noreferrer" className="border-separator bg-surface text-label-primary rounded-full border px-5 py-2.5 text-[15px] font-medium">
+                <TrackedOutboundLink href={x.pricing.url} rel="noopener noreferrer" productSlug={slug} kind="pricing" className="border-separator bg-surface text-label-primary rounded-full border px-5 py-2.5 text-[15px] font-medium">
                   Vendor pricing ↗
-                </a>
+                </TrackedOutboundLink>
               )}
               <Link href={`/tools/alternatives/${slug}`} className="text-label-secondary hover:text-label-primary px-2 text-[15px]">
                 Alternatives
