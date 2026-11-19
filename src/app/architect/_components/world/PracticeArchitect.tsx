@@ -41,6 +41,7 @@ import { numberById, numberObjects } from "./object-order";
 import { SetupPlan } from "./SetupPlan";
 import { PlanLedger } from "./PlanLedger";
 import { draftPracticeStack } from "@/domains/architect/services/draft-stack-service";
+import { previewSelectionCost, type SelectionPlan } from "@/domains/architect/services/selection-preview";
 import { trackArchitectEvent } from "@/domains/architect/analytics";
 import { markFirstInteraction } from "@/components/path/analytics";
 import { useFlag, useVariant } from "@/lib/live/client";
@@ -197,14 +198,19 @@ export function PracticeArchitect({ live = LIVE_DEFAULTS }: { live?: ArchitectLi
   }, [project, world, metadataMap, applicableCapabilities, extendCoverage]);
 
   // --- Actions ------------------------------------------------------------
-  const handleSelectProduct = useCallback(
-    (option: ProductOption) => {
-      if (!selectedObject) return;
+  /**
+   * What choosing `option` on the selected function does: the assignment and
+   * the draft suggestion it replaces. The selection and the inspector's cost
+   * preview both use this, so the preview is exactly what the choice does.
+   */
+  const planSelection = useCallback(
+    (option: ProductOption): (SelectionPlan & { additional: CapabilityId[] }) | null => {
+      if (!selectedObject || !project) return null;
 
       // Bind to the capabilities this object represents that the product
       // actually covers. A product never claims coverage it lacks.
       const requested = option.coversRequested.map((c) => c.capabilityId);
-      if (requested.length === 0 || !project) return;
+      if (requested.length === 0) return null;
 
       // ...and to the other open functions it handles as a built-in feature,
       // so choosing an all-in-one tool resolves everything it takes care of.
@@ -215,29 +221,52 @@ export function PracticeArchitect({ live = LIVE_DEFAULTS }: { live?: ArchitectLi
         applicable: applicableCapabilities,
         claimed: new Set(requested),
       });
-      const capabilityIds = [...requested, ...additional];
 
       // Replacing a draft suggestion with a different tool is a refinement.
       const replaced = selectedObject.assignments.find((a) => a.suggested && a.productSlug !== option.productSlug);
+      return {
+        additional,
+        replaced: replaced ? { productSlug: replaced.productSlug, capabilityIds: selectedObject.definition.capabilityIds } : null,
+        assignment: {
+          productSlug: option.productSlug,
+          productName: option.productName,
+          capabilityIds: [...requested, ...additional],
+          source: "selected",
+          // The clinician chose it, so it is no longer a "Draft my practice" suggestion.
+          suggested: false,
+          quotedMonthlyCents: option.cost.minMonthlyCents,
+          // An unresolved evidence question stays attached to the choice.
+          needsReview: option.uncertainties.length > 0,
+          reviewReason: option.uncertainties[0]?.reason,
+        },
+      };
+    },
+    [selectedObject, project, metadataMap, applicableCapabilities]
+  );
+
+  /** Net change to the whole stack's monthly total if `option` is chosen. */
+  const previewSelection = useCallback(
+    (option: ProductOption) => {
+      const plan = planSelection(option);
+      if (!plan || !project || !fingerprint || metadataMap.size === 0) return null;
+      return previewSelectionCost(project, plan, fingerprint, metadataMap);
+    },
+    [planSelection, project, fingerprint, metadataMap]
+  );
+
+  const handleSelectProduct = useCallback(
+    (option: ProductOption) => {
+      const plan = planSelection(option);
+      if (!plan || !selectedObject) return;
+      const { additional, replaced } = plan;
       trackArchitectEvent(replaced ? "architect_product_replace" : "architect_product_add", {
         productSlug: option.productSlug,
         previousProductSlug: replaced?.productSlug,
-        capabilityId: requested[0],
+        capabilityId: option.coversRequested[0]?.capabilityId,
       });
-      if (replaced) removeProductFromCapabilities(replaced.productSlug, selectedObject.definition.capabilityIds);
+      if (replaced) removeProductFromCapabilities(replaced.productSlug, replaced.capabilityIds);
 
-      assignProduct({
-        productSlug: option.productSlug,
-        productName: option.productName,
-        capabilityIds,
-        source: "selected",
-        // The clinician chose it, so it is no longer a "Draft my practice" suggestion.
-        suggested: false,
-        quotedMonthlyCents: option.cost.minMonthlyCents,
-        // An unresolved evidence question stays attached to the choice.
-        needsReview: option.uncertainties.length > 0,
-        reviewReason: option.uncertainties[0]?.reason,
-      });
+      assignProduct(plan.assignment);
 
       // Every object this choice resolves plays the install animation.
       recentlyInstalled.current = [
@@ -252,7 +281,7 @@ export function PracticeArchitect({ live = LIVE_DEFAULTS }: { live?: ArchitectLi
           .map((o) => o.definition.objectId) ?? []),
       ];
     },
-    [selectedObject, assignProduct, removeProductFromCapabilities, project, metadataMap, applicableCapabilities, world]
+    [planSelection, selectedObject, assignProduct, removeProductFromCapabilities, world]
   );
 
   // Removing a product from an object removes it from that object's
@@ -633,6 +662,7 @@ export function PracticeArchitect({ live = LIVE_DEFAULTS }: { live?: ArchitectLi
         assignedSlugs={assignedSlugs}
         onClose={() => setSelectedObjectId(null)}
         onSelectProduct={handleSelectProduct}
+        previewSelection={previewSelection}
         onRemoveProduct={handleRemoveProduct}
         objectNamesByProduct={objectNamesByProduct}
         onMarkHandledElsewhere={handleMarkHandledElsewhere}

@@ -25,6 +25,7 @@ import Link from "next/link";
 import type { PracticeFingerprint } from "@/domains/architect/schemas/fingerprint";
 import type { ProductArchitectureMetadata } from "@/domains/architect/schemas/product-metadata";
 import type { ArchitectProductDisplay } from "@/domains/architect/services";
+import type { SelectionCostPreview } from "@/domains/architect/services/selection-preview";
 import {
   EVIDENCE_CONFIDENCE_LABELS,
   FIT_TIER_LABELS,
@@ -45,6 +46,8 @@ interface ObjectInspectorProps {
   assignedSlugs: string[];
   onClose: () => void;
   onSelectProduct: (option: ProductOption) => void;
+  /** Net change to the whole stack's monthly total if `option` is chosen. */
+  previewSelection?: (option: ProductOption) => SelectionCostPreview | null;
   onRemoveProduct: (productSlug: string) => void;
   /** Names of every object each chosen product resolves, keyed by slug. */
   objectNamesByProduct?: ReadonlyMap<string, string[]>;
@@ -64,6 +67,7 @@ export function ObjectInspector({
   assignedSlugs,
   onClose,
   onSelectProduct,
+  previewSelection,
   onRemoveProduct,
   objectNamesByProduct,
   onMarkHandledElsewhere,
@@ -286,6 +290,7 @@ export function ObjectInspector({
                     <OptionCard
                       option={recommendation.recommended}
                       current={currentFor(recommendation.recommended.productSlug)}
+                      netDeltaCents={previewSelection?.(recommendation.recommended)?.deltaCents ?? null}
                       displayMap={displayMap}
                       isAssigned={assignedSlugs.includes(
                         recommendation.recommended.productSlug
@@ -308,6 +313,7 @@ export function ObjectInspector({
                           key={option.productSlug}
                           option={option}
                           current={currentFor(option.productSlug)}
+                          netDeltaCents={previewSelection?.(option)?.deltaCents ?? null}
                           displayMap={displayMap}
                           isAssigned={assignedSlugs.includes(
                             option.productSlug
@@ -476,12 +482,19 @@ function AssignedCard({
 function OptionCard({
   option,
   current,
+  netDeltaCents,
   displayMap,
   isAssigned,
   emphasis = false,
   onSelect,
 }: {
   option: ProductOption;
+  /**
+   * Net change to the plan's monthly total if this option is chosen, from the
+   * same cost calculation as the ledger (shared coverage included); null
+   * when it can't be known (quotes or unlisted prices).
+   */
+  netDeltaCents: number | null;
   /** The tool now covering this function, when different from this option. */
   current?: { slug: string; name: string; cents: number | null; covers: number };
   displayMap: Map<string, ArchitectProductDisplay>;
@@ -490,8 +503,7 @@ function OptionCard({
   onSelect: () => void;
 }) {
   const verifiedOn = displayMap.get(option.productSlug)?.priceVerifiedOn;
-  const mine = option.cost.minMonthlyCents;
-  const delta = current && current.cents !== null && mine !== null && !option.cost.requiresQuote ? mine - current.cents : null;
+  const delta = netDeltaCents;
   const coverDelta = current ? option.coversRequested.length + option.coversAdditional.length - current.covers : 0;
   const display = displayMap.get(option.productSlug);
   const category = display?.category as
@@ -549,7 +561,7 @@ function OptionCard({
       {current && !isAssigned && (
         <p className="mt-2 text-xs text-label-secondary">
           Compared with {current.name}:{" "}
-          {delta === null ? "cost difference unknown" : delta === 0 ? "same listed price" : `${delta > 0 ? "+" : "−"}$${Math.round(Math.abs(delta) / 100)}/mo`}
+          {delta === null ? "change to your total unknown" : delta === 0 ? "no change to your monthly total" : `${delta > 0 ? "+" : "−"}$${Math.round(Math.abs(delta) / 100)}/mo to your total`}
           {coverDelta !== 0 && `, covers ${Math.abs(coverDelta)} ${coverDelta > 0 ? "more" : "fewer"} ${Math.abs(coverDelta) === 1 ? "function" : "functions"}`}
           {" · "}
           <Link

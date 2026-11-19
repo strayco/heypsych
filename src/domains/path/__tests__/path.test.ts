@@ -431,3 +431,19 @@ describe("legacy records: boxed warning stated in the record's own words", () =>
     expect(statedBoxedWarning(rec("A calm, plain summary with no warnings mentioned."))).toBeUndefined();
   });
 });
+
+describe("legacy records: boxed warning labelled in reviewed precautions", () => {
+  it("uses only items explicitly labelled as a boxed warning", async () => {
+    const { labeledBoxedWarning } = await import("@/lib/comparison/treatment-normalizer");
+    expect(
+      labeledBoxedWarning([
+        "Black box warning: hepatotoxicity, especially in children under 2 years",
+        "Black box warning: teratogenicity—contraindicated in pregnancy for migraine prophylaxis",
+        "Risk of pancreatitis—discontinue if suspected",
+      ])
+    ).toBe("Hepatotoxicity, especially in children under 2 years. Teratogenicity—contraindicated in pregnancy for migraine prophylaxis.");
+    // Unlabelled precautions are never promoted.
+    expect(labeledBoxedWarning(["Elderly patients with dementia-related psychosis have an increased risk of death"])).toBeUndefined();
+    expect(labeledBoxedWarning(undefined)).toBeUndefined();
+  });
+});

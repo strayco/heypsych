@@ -665,7 +665,8 @@ export class TreatmentNormalizer {
           )
         : undefined,
       serious_risks: seriousRisks.length > 0 ? seriousRisks : undefined,
-      black_box_warning: (warningsSection?.black_box as string) || statedBoxedWarning(v2),
+      black_box_warning:
+        (warningsSection?.black_box as string) || labeledBoxedWarning(warningsSection?.other) || statedBoxedWarning(v2),
       contraindications: contraindications.length > 0 ? contraindications : undefined,
       precautions: (warningsSection?.other as string[]) || undefined,
       interactions: this.normalizeInteractions(v2),
@@ -1137,6 +1138,24 @@ export class TreatmentNormalizer {
  */
 const BOXED_MENTION = /\b(boxed warning|black[- ]box)/i;
 const BOXED_NEGATED = /\b(no|not|without|lacks?|unlike)\b[^.]{0,60}\b(boxed warning|black[- ]box)|\b(boxed warning|black[- ]box)[^.]{0,30}\b(not|removed|lifted)\b/i;
+
+/**
+ * Reviewed legacy precaution lists sometimes label items explicitly, e.g.
+ * "Black box warning: hepatotoxicity, especially in children under 2 years".
+ * Use only those labelled items, verbatim apart from the label. Unlabelled
+ * precautions are never promoted to a boxed warning.
+ */
+const BOXED_LABEL = /^\s*(black[- ]box|boxed) warnings?\s*:\s*/i;
+
+export function labeledBoxedWarning(other: unknown): string | undefined {
+  if (!Array.isArray(other)) return undefined;
+  const items = other
+    .filter((o): o is string => typeof o === "string" && BOXED_LABEL.test(o))
+    .map((o) => o.replace(BOXED_LABEL, "").trim())
+    .filter(Boolean)
+    .map((o) => o.charAt(0).toUpperCase() + o.slice(1).replace(/[.;]\s*$/, ""));
+  return items.length ? items.join(". ") + "." : undefined;
+}
 
 export function statedBoxedWarning(v2: Pick<TreatmentV2, "summary" | "description" | "sections">): string | undefined {
   const overview = (v2.sections ?? [])

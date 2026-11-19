@@ -30,6 +30,10 @@ import {
   type RecoveryNotice,
   type SaveStatus,
 } from "@/domains/architect/persistence/project-persistence";
+import {
+  withProductAssigned,
+  withoutProductOnCapabilities,
+} from "@/domains/architect/services/selection-preview";
 
 const AUTOSAVE_DELAY_MS = 600;
 
@@ -163,76 +167,16 @@ export function usePracticeProject(): UsePracticeProjectResult {
   // --- Assignments --------------------------------------------------------
   const assignProduct = useCallback(
     (assignment: Omit<ToolAssignment, "assignedAt">) => {
-      mutate((prev) => {
-        const assignedAt = new Date().toISOString();
-        const existing = prev.assignments.find(
-          (a) => a.productSlug === assignment.productSlug
-        );
-
-        // Re-assigning a product the practice already has merges the
-        // capability coverage rather than creating a second subscription.
-        const assignments = existing
-          ? prev.assignments.map((a) =>
-              a.productSlug === assignment.productSlug
-                ? {
-                    ...a,
-                    ...assignment,
-                    capabilityIds: [
-                      ...new Set([
-                        ...a.capabilityIds,
-                        ...assignment.capabilityIds,
-                      ]),
-                    ],
-                    // Choosing the product again for a function the user
-                    // had removed it from reverses that removal.
-                    declinedCapabilityIds: (a.declinedCapabilityIds ?? []).filter(
-                      (id) => !assignment.capabilityIds.includes(id)
-                    ),
-                    needsReview: false,
-                    reviewReason: undefined,
-                    assignedAt: a.assignedAt,
-                  }
-                : a
-            )
-          : [...prev.assignments, { ...assignment, assignedAt }];
-
-        // Assigning a product supersedes any "not needed" decision on the
-        // capabilities it now covers.
-        const decisions = prev.decisions.filter(
-          (d) => !assignment.capabilityIds.includes(d.capabilityId)
-        );
-
-        return { ...prev, assignments, decisions };
-      });
+      // Shared with the inspector's cost preview (selection-preview.ts).
+      mutate((prev) => withProductAssigned(prev, assignment, new Date().toISOString()));
     },
     [mutate]
   );
 
   const removeProductFromCapabilities = useCallback(
     (productSlug: string, capabilityIds: CapabilityId[]) => {
-      mutate((prev) => {
-        const assignments = prev.assignments.flatMap((a) => {
-          if (a.productSlug !== productSlug) return [a];
-          const remaining = a.capabilityIds.filter(
-            (id) => !capabilityIds.includes(id)
-          );
-          // Nothing left for this product to do: it leaves the practice.
-          if (remaining.length === 0) return [];
-          const removed = a.capabilityIds.filter((id) =>
-            capabilityIds.includes(id)
-          );
-          return [
-            {
-              ...a,
-              capabilityIds: remaining,
-              declinedCapabilityIds: [
-                ...new Set([...(a.declinedCapabilityIds ?? []), ...removed]),
-              ],
-            },
-          ];
-        });
-        return { ...prev, assignments };
-      });
+      // Shared with the inspector's cost preview (selection-preview.ts).
+      mutate((prev) => withoutProductOnCapabilities(prev, productSlug, capabilityIds));
     },
     [mutate]
   );
