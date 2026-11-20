@@ -89,6 +89,7 @@ export function Footer() {
             <p className="text-xs text-label-tertiary">
               <Link
                 href="/about/review-methodology"
+                prefetch={false}
                 className="hover:text-accent hover:underline"
               >
                 Learn about our clinical review process
@@ -107,6 +108,7 @@ export function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
+                      prefetch={false}
                       className="text-sm text-label-secondary transition-colors hover:text-accent"
                     >
                       {link.name}

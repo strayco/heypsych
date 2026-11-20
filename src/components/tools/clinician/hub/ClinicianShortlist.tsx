@@ -104,6 +104,7 @@ function ProductCard({ product, practice }: { product: HubProduct; practice: Pos
         <div className="mt-4 flex flex-wrap items-start gap-x-4 gap-y-2">
           <Link
             href={product.alternativesHref}
+            prefetch={false}
             className="text-label-tertiary hover:text-label-primary focus-visible:ring-accent relative z-10 inline-block rounded text-[13px] focus-visible:ring-2 focus-visible:outline-none"
           >
             Alternatives

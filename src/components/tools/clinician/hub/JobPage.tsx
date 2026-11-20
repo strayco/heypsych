@@ -72,6 +72,7 @@ export function JobPage({
                 <li key={p.slug}>
                   <Link
                     href={p.href}
+                    prefetch={false}
                     className="border-separator bg-surface text-label-primary hover:border-label-tertiary rounded-full border px-3.5 py-1.5 text-[14px]"
                   >
                     {p.name}
@@ -90,7 +91,7 @@ export function JobPage({
             <ul className="mt-5 grid gap-x-10 gap-y-2 sm:grid-cols-2 lg:grid-cols-3">
               {comparisons.map((c) => (
                 <li key={c.slug}>
-                  <Link href={c.href} className="text-label-primary hover:text-accent text-[15px]">
+                  <Link href={c.href} prefetch={false} className="text-label-primary hover:text-accent text-[15px]">
                     {c.label}
                   </Link>
                 </li>
@@ -110,6 +111,7 @@ export function JobPage({
               <li key={j.slug}>
                 <Link
                   href={`/tools/for-clinicians/${j.slug}`}
+                  prefetch={false}
                   className="border-separator text-label-secondary hover:text-label-primary hover:bg-fill-quaternary rounded-full border px-3 py-1.5 text-[14px]"
                 >
                   {j.name}
