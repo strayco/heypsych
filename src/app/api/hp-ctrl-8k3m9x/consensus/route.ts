@@ -14,6 +14,8 @@
  *    with the current algorithm.
  *  - Unpublish publishes "nothing" (the score disappears); rollback restores an
  *    earlier published revision. All keep append-only history.
+ *  - After each, the affected public pages are re-rendered before responding,
+ *    so the first visitor afterwards does not see the previous state.
  *
  * Same session, CSRF and size guard as the other live-update routes. Responses
  * contain private evidence and are never cached. Public pages never call this.
@@ -25,6 +27,9 @@ import { dbConfigured, guard, json } from "@/lib/live/admin-guard";
 import { TAG_CONSENSUS } from "@/lib/live/state";
 import { LiveError, discardDraft, history, publishDraft, publishValue, rollbackTo, saveDraft, type Revision } from "@/lib/live/store";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
+import { clinicianToolPath } from "@/lib/tools/category-hub-slug";
+import { getAllPublishableCurated } from "@/lib/tools/curated-comparisons";
+import { warmPaths } from "@/lib/live/warm";
 import { CONSENSUS_PILOT, ConsensusRecordZ, isPilotSlug, type ConsensusRecord } from "@/domains/consensus/schema";
 import { ALGORITHM, approvalIsCurrent, contentHash, parseRecord, projectConsensusRows, scoreRecord } from "@/domains/consensus/server";
 
@@ -32,8 +37,17 @@ export const dynamic = "force-dynamic";
 
 const KIND = "consensus" as const;
 
-function revalidate() {
+/**
+ * Invalidate, then render every public page that shows this product's score
+ * so no visitor receives the stale version (see warm.ts).
+ */
+async function revalidate(request: NextRequest, slug: string) {
   revalidateTag(TAG_CONSENSUS, "max");
+  const tool = await ClinicianToolService.getBaseTool(slug);
+  const profile = tool ? clinicianToolPath(tool) : null;
+  const comparisons = (await getAllPublishableCurated()).filter((c) => c.tools.includes(slug)).map((c) => `/tools/compare/${c.slug}`);
+  const paths = [...(profile ? [profile] : []), ...comparisons, "/architect"];
+  return warmPaths(request.nextUrl.origin, paths);
 }
 
 async function revisions(slug: string): Promise<Revision[]> {
@@ -189,14 +203,14 @@ export async function POST(request: NextRequest) {
         if (!approvalIsCurrent(record)) return json({ error: "Approve this draft before publishing" }, 409);
         if (record.approval!.algorithm !== ALGORITHM) return json({ error: "Approved with an older algorithm; approve again" }, 409);
         const revision = await publishDraft(KIND, slug);
-        revalidate();
-        return json({ revision: describe(revision) });
+        const warmed = await revalidate(request, slug);
+        return json({ revision: describe(revision), warmed });
       }
       case "unpublish": {
         if (!revs.some((r) => r.status === "published" && r.value !== null)) return json({ error: "Nothing is published" }, 409);
         const revision = await publishValue(KIND, slug, null, note ?? "Unpublished", "admin");
-        revalidate();
-        return json({ revision: describe(revision) });
+        const warmed = await revalidate(request, slug);
+        return json({ revision: describe(revision), warmed });
       }
       case "rollback": {
         if (typeof body.revisionId !== "number") return json({ error: "revisionId required" }, 400);
@@ -204,8 +218,8 @@ export async function POST(request: NextRequest) {
         if (!target) return json({ error: "Not a revision of this product" }, 404);
         if (target.value !== null && !approvalIsCurrent(parseRecord(target.value))) return json({ error: "That revision was never approved" }, 409);
         const revision = await rollbackTo(target.id, "admin");
-        revalidate();
-        return json({ revision: describe(revision) });
+        const warmed = await revalidate(request, slug);
+        return json({ revision: describe(revision), warmed });
       }
       case "discard":
         return json({ discarded: await discardDraft(KIND, slug) });

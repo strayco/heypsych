@@ -11,8 +11,10 @@ import { NextRequest } from "next/server";
 
 const auth = vi.hoisted(() => ({ signedIn: true }));
 const revalidateTag = vi.hoisted(() => vi.fn());
+const warmPaths = vi.hoisted(() => vi.fn(async (_origin: string, paths: string[]) => paths.map((path) => ({ path, status: 200, fresh: true, attempts: 2 }))));
 
 vi.mock("@/lib/auth/admin-auth", () => ({ isAdminAuthenticated: async () => auth.signedIn }));
+vi.mock("@/lib/live/warm", () => ({ warmPaths }));
 vi.mock("next/cache", async (importOriginal) => ({
   ...(await importOriginal<typeof import("next/cache")>()),
   revalidateTag,
@@ -84,6 +86,7 @@ describe.skipIf(!DB)("Consensus Score admin flow (LIVE_TEST_DB)", () => {
   beforeEach(() => {
     auth.signedIn = true;
     revalidateTag.mockClear();
+    warmPaths.mockClear();
   });
 
   it("refuses signed-out reads and writes, cross-site writes and non-pilot products", async () => {
@@ -137,6 +140,11 @@ describe.skipIf(!DB)("Consensus Score admin flow (LIVE_TEST_DB)", () => {
     const pub = await post({ action: "publish", slug: SLUG });
     expect(pub.status).toBe(200);
     expect(revalidateTag).toHaveBeenCalledWith("hp-live-consensus", "max");
+    // Every public surface that shows the score is re-rendered before responding.
+    const warmed = (pub.data.warmed as { path: string }[]).map((w) => w.path);
+    expect(warmed).toContain("/tools/for-clinicians/ehr-practice-management/simplepractice");
+    expect(warmed).toContain("/architect");
+    expect(warmed.some((p) => p.startsWith("/tools/compare/") && p.includes("simplepractice"))).toBe(true);
 
     const scores = await publicScores();
     const p = scores[SLUG];

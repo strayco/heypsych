@@ -24,15 +24,20 @@
  *     listing relevance x match certainty x recency.
  *  5. Smoothing. The weighted mean is shrunk toward a conservative prior with
  *     PRIOR_STRENGTH pseudo-reviews, so thin evidence cannot look certain.
- *  6. Confidence. From independent groups (each with enough reviews to
- *     corroborate), effective reviews, freshness and agreement between
- *     sources. Below the minimum the score is withheld.
+ *  6. Confidence. From independent full-product groups, effective reviews,
+ *     freshness and agreement between sources. A small but legitimate source
+ *     (MIN_THIN_REVIEWS to MIN_CORROBORATING_REVIEWS - 1 reviews) counts
+ *     toward independence with its reduced weight and caps confidence at
+ *     Limited. Below the minimum the score is withheld.
+ *  Small-sample adjustment (v2): each source's rating is first pulled toward
+ *  the prior by SOURCE_SHRINK pseudo-reviews, so a handful of perfect
+ *  reviews cannot move the composite much.
  */
 
 import { createHash } from "crypto";
 import { SOURCE_LABELS, type ConsensusRecord, type Observation, type SourceType } from "./schema";
 
-export const ALGORITHM = "consensus-v1";
+export const ALGORITHM = "consensus-v2";
 
 // --- Weights and thresholds (private) --------------------------------------
 
@@ -75,6 +80,10 @@ const CONFLICT_MIN_REVIEWS = 20;
  * and have this many reviews. Others still add to the average.
  */
 const MIN_CORROBORATING_REVIEWS = 20;
+/** Smallest full-product source that still counts toward independence (capped at Limited). */
+const MIN_THIN_REVIEWS = 5;
+/** Per-source pseudo-reviews at the prior before combining (v2 small-sample adjustment). */
+const SOURCE_SHRINK = 10;
 
 const WITHHOLD = { minGroups: 2, minEffective: 30 };
 const MODERATE = { minGroups: 2, minEffective: 150 };
@@ -182,7 +191,9 @@ export function computeConsensus(observations: readonly Observation[], asOf: str
     seenUrls.add(urlKey);
     const effective =
       Math.min(o.reviewCount, VOLUME_CAP) * SOURCE_QUALITY[o.source] * SCOPE_RELEVANCE[o.scope] * MATCH_CERTAINTY[o.match] * recencyWeight(age);
-    candidates.push({ o, normalized: normalizeRating(o.rating, o.ratingScale), effective, group: groupOf(o), age });
+    const n = Math.min(o.reviewCount, VOLUME_CAP);
+    const adjusted = (n * normalizeRating(o.rating, o.ratingScale) + SOURCE_SHRINK * PRIOR_MEAN) / (n + SOURCE_SHRINK);
+    candidates.push({ o, normalized: adjusted, effective, group: groupOf(o), age });
   }
 
   // One listing per review pool: the largest (then the newest, then the id, for determinism).
@@ -228,6 +239,8 @@ export function computeConsensus(observations: readonly Observation[], asOf: str
 
   const groups = used.filter((c) => c.effective > 0);
   const corroborating = groups.filter((c) => c.o.reviewCount >= MIN_CORROBORATING_REVIEWS && c.o.scope === "full-product");
+  const thinFull = groups.filter((c) => c.o.scope === "full-product" && c.o.reviewCount >= MIN_THIN_REVIEWS && c.o.reviewCount < MIN_CORROBORATING_REVIEWS);
+  const counted = corroborating.length + thinFull.length;
   const fullProductGroups = new Set(groups.filter((c) => c.o.scope === "full-product").map((c) => c.group)).size;
   const comparable = groups.filter((c) => c.o.reviewCount >= CONFLICT_MIN_REVIEWS).map((c) => c.normalized);
   const spread = comparable.length >= 2 ? Math.max(...comparable) - Math.min(...comparable) : null;
@@ -236,15 +249,17 @@ export function computeConsensus(observations: readonly Observation[], asOf: str
   const sourceNames = [...new Set(groups.map((c) => sourceName(c.o)))].sort();
 
   const rationale: string[] = [];
-  const thin = groups.length - corroborating.length;
-  if (thin > 0)
+  const uncounted = groups.length - counted;
+  if (uncounted > 0)
     rationale.push(
-      `${thin} source${thin === 1 ? "" : "s"} with fewer than ${MIN_CORROBORATING_REVIEWS} reviews, or rating only a companion app, add${thin === 1 ? "s" : ""} to the average but not to independence.`
+      `${uncounted} source${uncounted === 1 ? "" : "s"} with fewer than ${MIN_THIN_REVIEWS} reviews, or rating only a companion app, add${uncounted === 1 ? "s" : ""} to the average but not to independence.`
     );
   let status: ScoreResult["status"] = "scored";
-  if (corroborating.length < WITHHOLD.minGroups) {
+  if (counted < WITHHOLD.minGroups || corroborating.length < 1) {
     status = "withheld";
-    rationale.push(`Needs at least ${WITHHOLD.minGroups} independent full-product review sources with ${MIN_CORROBORATING_REVIEWS}+ reviews each; has ${corroborating.length}.`);
+    rationale.push(
+      `Needs at least ${WITHHOLD.minGroups} independent full-product review sources (one with ${MIN_CORROBORATING_REVIEWS}+ reviews, others ${MIN_THIN_REVIEWS}+); has ${corroborating.length} and ${thinFull.length} small.`
+    );
   }
   if (effectiveReviews < WITHHOLD.minEffective) {
     status = "withheld";
@@ -279,6 +294,8 @@ export function computeConsensus(observations: readonly Observation[], asOf: str
     } else {
       confidence = "Limited";
       if (conflict) rationale.push(`Sources disagree by ${Math.round(spread!)} points; capped at Limited.`);
+      else if (corroborating.length < MODERATE.minGroups)
+        rationale.push(`The second independent source has fewer than ${MIN_CORROBORATING_REVIEWS} reviews; weighted down and capped at Limited.`);
       else rationale.push(`Moderate confidence needs ${MODERATE.minEffective}+ weighted reviews; has ${Math.round(effectiveReviews)}.`);
     }
   }
@@ -291,7 +308,7 @@ export function computeConsensus(observations: readonly Observation[], asOf: str
     confidence,
     rawMean: rawMean === null ? null : round1(rawMean),
     effectiveReviews: round1(effectiveReviews),
-    independentGroups: corroborating.length,
+    independentGroups: counted,
     fullProductGroups,
     spread: spread === null ? null : round1(spread),
     sourceNames,

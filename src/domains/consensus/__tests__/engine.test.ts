@@ -126,13 +126,24 @@ describe("scoring", () => {
     expect(share("trustradius")).toBeGreaterThan(share("apple-app-store"));
   });
 
-  it("does not let a source with a handful of reviews count as independent corroboration", () => {
-    const r = computeConsensus([obs({ source: "capterra", reviewCount: 1200 }), obs({ source: "trustradius", rating: 4.6, ratingScale: 5, reviewCount: 6 })], AS_OF);
-    expect(r.status).toBe("withheld");
-    expect(r.independentGroups).toBe(1);
-    expect(r.rationale.join(" ")).toMatch(/fewer than 20 reviews/);
+  it("scores a small but legitimate second source at Limited confidence, with reduced weight", () => {
+    const r = computeConsensus([obs({ source: "capterra", reviewCount: 1200 }), obs({ source: "trustradius", rating: 5, ratingScale: 5, reviewCount: 6 })], AS_OF);
+    expect(r.status).toBe("scored");
+    expect(r.confidence).toBe("Limited");
+    expect(r.independentGroups).toBe(2);
+    expect(r.rationale.join(" ")).toMatch(/fewer than 20 reviews; weighted down/);
+    const small = r.contributions.find((c) => c.source === "trustradius")!;
+    expect(small.share).toBeLessThan(0.01);
+    // Six perfect reviews are pulled well below 100 before combining.
+    expect(small.normalized!).toBeLessThan(80);
+    // Below five reviews it no longer counts toward independence.
+    const tooFew = computeConsensus([obs({ source: "capterra", reviewCount: 1200 }), obs({ source: "trustradius", reviewCount: 4 })], AS_OF);
+    expect(tooFew.status).toBe("withheld");
+    // Two thin sources without one solid source are still withheld.
+    const allThin = computeConsensus([obs({ source: "capterra", reviewCount: 15 }), obs({ source: "trustradius", reviewCount: 15 })], AS_OF);
+    expect(allThin.status).toBe("withheld");
     const ok = computeConsensus([obs({ source: "capterra", reviewCount: 1200 }), obs({ source: "trustradius", reviewCount: 20 })], AS_OF);
-    expect(ok.status).toBe("scored");
+    expect(ok.confidence).toBe("Moderate");
   });
 
   it("does not count a companion app's store rating as independent confirmation", () => {

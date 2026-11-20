@@ -773,7 +773,7 @@ drift_or_blockers:
   - "Clinician catalog is 24 decision-set products on disk (21 in Architect after excluding Headway/Grow/SonderMind). 877 other V4 product files and 56 orphan comparisons were deleted."
   - "User instruction (delete tools people are not deciding between) takes precedence over preserving unused clinician-tool URLs. Retired public slugs 308 to /tools/for-clinicians."
   - "Physical-device testing and visual regression snapshots are outstanding."
-  - "Consensus Score pilot (D-013), 2026-11-20, not deployed: engine src/domains/consensus, Admin /hp-ctrl-8k3m9x/consensus, public reads via getPublicConsensus (src/lib/live/state.ts). Needs migration 048 before use. No score is published; evidence and editorial approval pending."
+  - "Consensus Score (D-013), 2026-11-20: engine consensus-v2 (src/domains/consensus), Admin /hp-ctrl-8k3m9x/consensus, public reads via getPublicConsensus, post-publish page warming (src/lib/live/warm.ts). Migration 048 required. No score published: G2/Capterra/GetApp/Software Advice terms bar storing or using their ratings (Derived Data) without written permission; TrustRadius limits use to personal/internal, non-commercial; Trustpilot aggregated data needs a partner licence. Publication blocked until permissions or licensed sources exist."
 ```
 
 ### Practice Architect 3.0 — "The Living Practice" (in progress, 2026-10-22)
