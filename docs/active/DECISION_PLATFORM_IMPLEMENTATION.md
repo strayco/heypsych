@@ -278,6 +278,13 @@ Patient safety policy and clinician product-ranking policy remain separate.
 - **D-012:** Initial persistence remains anonymous and local unless a later
   phase explicitly approves accounts, cloud storage, consent, retention, and
   deletion behavior.
+- **D-013 (2026-11-20, founder instruction):** The HeyPsych Consensus Score
+  (0-100, review consensus for five pilot clinician products) may display on
+  tool profiles, curated comparisons and Practice Architect option cards. It
+  summarises independent review sources, is shown with its own evidence
+  confidence, is withheld when evidence is insufficient, and is display-only:
+  it never enters fit tiers, candidate selection, ordering, cost or
+  explanations. D-011 is unchanged for Architect fit.
 
 Supersede a decision by adding a new dated decision. Do not rewrite decision
 history.
@@ -766,6 +773,7 @@ drift_or_blockers:
   - "Clinician catalog is 24 decision-set products on disk (21 in Architect after excluding Headway/Grow/SonderMind). 877 other V4 product files and 56 orphan comparisons were deleted."
   - "User instruction (delete tools people are not deciding between) takes precedence over preserving unused clinician-tool URLs. Retired public slugs 308 to /tools/for-clinicians."
   - "Physical-device testing and visual regression snapshots are outstanding."
+  - "Consensus Score pilot (D-013), 2026-11-20, not deployed: engine src/domains/consensus, Admin /hp-ctrl-8k3m9x/consensus, public reads via getPublicConsensus (src/lib/live/state.ts). Needs migration 048 before use. No score is published; evidence and editorial approval pending."
 ```
 
 ### Practice Architect 3.0 — "The Living Practice" (in progress, 2026-10-22)

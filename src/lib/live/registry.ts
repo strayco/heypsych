@@ -19,7 +19,11 @@
  * value is not.
  */
 
-export type LiveKind = "tool" | "tool-new" | "flag" | "copy" | "experiment";
+/**
+ * "consensus": HeyPsych Consensus Score records (src/domains/consensus). Private
+ * evidence; public pages see only the approved projection.
+ */
+export type LiveKind = "tool" | "tool-new" | "flag" | "copy" | "experiment" | "consensus";
 
 // ---------------------------------------------------------------------------
 // Feature flags (nonclinical presentation only)

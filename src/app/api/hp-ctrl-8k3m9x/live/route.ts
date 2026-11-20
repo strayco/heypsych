@@ -16,12 +16,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 import { draftMode } from "next/headers";
-import { isAdminAuthenticated } from "@/lib/auth/admin-auth";
+import { dbConfigured, guard, json } from "@/lib/live/admin-guard";
 import { ClinicianToolService } from "@/lib/tools/clinician-tool-service";
 import { applyToolOverlays, validateNewTool, validateToolOverlay, pickEditable } from "@/lib/live/apply-tools";
 import { validateCopyValue, validateExperimentValue, validateFlagValue } from "@/lib/live/config";
 import { COPY, EXPERIMENTS, FLAGS, TOOL_EDITABLE_FIELDS, TOOL_LOCKED_FIELDS, copyDef, experimentDef, flagDef, type LiveKind } from "@/lib/live/registry";
-import { TAG_CONFIG, TAG_TOOLS } from "@/lib/live/state";
+import { TAG_CONFIG, TAG_CONSENSUS, TAG_TOOLS } from "@/lib/live/state";
 import {
   LiveError,
   discardDraft,
@@ -37,28 +37,8 @@ import {
 
 export const dynamic = "force-dynamic";
 
+// Consensus records are edited only through /api/hp-ctrl-8k3m9x/consensus (approval rules).
 const KINDS: LiveKind[] = ["tool", "tool-new", "flag", "copy", "experiment"];
-const MAX_BODY = 256 * 1024;
-
-function json(data: unknown, status = 200) {
-  return NextResponse.json(data, { status, headers: { "Cache-Control": "no-store" } });
-}
-
-async function guard(request: NextRequest, write: boolean): Promise<NextResponse | null> {
-  if (!(await isAdminAuthenticated())) return json({ error: "Not signed in" }, 401);
-  if (write) {
-    const origin = request.headers.get("origin");
-    const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host");
-    if (!origin || !host || new URL(origin).host !== host) return json({ error: "Cross-site request refused" }, 403);
-    const length = Number(request.headers.get("content-length") ?? 0);
-    if (length > MAX_BODY) return json({ error: "Request too large" }, 413);
-  }
-  return null;
-}
-
-function dbConfigured() {
-  return Boolean(process.env.SUPABASE_DB_URL || process.env.DATABASE_URL);
-}
 
 /** Validate a value for storage. Returns the value to store (null = revert to file / default). */
 async function validate(kind: LiveKind, key: string, value: unknown): Promise<unknown> {
@@ -101,6 +81,8 @@ async function validate(kind: LiveKind, key: string, value: unknown): Promise<un
       if (!v) throw new LiveError("An experiment needs active (true/false)", 422);
       return v;
     }
+    default:
+      throw new LiveError("Not editable here", 400);
   }
 }
 
@@ -124,6 +106,10 @@ function revalidate(kind: LiveKind) {
     // first request after publishing may still see the previous page while it
     // regenerates in the background; every later request sees the new price.
     revalidateTag(TAG_TOOLS, "max");
+  } else if (kind === "consensus") {
+    // Consensus Scores appear on tool profiles and compare pages (dynamicParams
+    // = false), so stale-while-revalidate for the same reason as tools.
+    revalidateTag(TAG_CONSENSUS, "max");
   } else {
     // Flags and copy are read only by "/" and "/architect" (neither uses
     // dynamicParams = false), so they can expire immediately.
@@ -156,7 +142,8 @@ export async function GET(request: NextRequest) {
       const body = {
         note: "Fallback copy of published live updates, used only if the database cannot be reached. Exported from HeyPsych Admin.",
         exportedAt: new Date().toISOString(),
-        rows: published.map((r) => ({ id: r.id, kind: r.kind, key: r.key, value: r.value })),
+        // Consensus records hold private evidence and are never exported.
+        rows: published.filter((r) => r.kind !== "consensus").map((r) => ({ id: r.id, kind: r.kind, key: r.key, value: r.value })),
       };
       return new NextResponse(JSON.stringify(body, null, 2), {
         headers: { "Content-Type": "application/json", "Content-Disposition": 'attachment; filename="published.json"', "Cache-Control": "no-store" },
@@ -189,9 +176,10 @@ export async function GET(request: NextRequest) {
         }))
         .sort((a, b) => Number(b.public) - Number(a.public) || a.name.localeCompare(b.name)),
       liveErrors: live.errors,
-      drafts,
-      published,
-      recent,
+      // Consensus records are managed on their own screen.
+      drafts: drafts.filter((r) => r.kind !== "consensus"),
+      published: published.filter((r) => r.kind !== "consensus"),
+      recent: recent.filter((r) => r.kind !== "consensus"),
       registry: { flags: FLAGS, copy: COPY, experiments: EXPERIMENTS },
     });
   } catch (error) {

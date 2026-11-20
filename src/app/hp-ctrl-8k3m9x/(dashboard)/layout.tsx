@@ -34,6 +34,7 @@ const NAV_ITEMS = [
   { href: "/hp-ctrl-8k3m9x", label: "Dashboard", icon: Home },
   { href: "/hp-ctrl-8k3m9x/vendors", label: "Vendors", icon: Building2 },
   { href: "/hp-ctrl-8k3m9x/live", label: "Live updates", icon: Settings },
+  { href: "/hp-ctrl-8k3m9x/consensus", label: "Consensus Score", icon: BarChart3 },
   { href: "/hp-ctrl-8k3m9x/catalog", label: "Catalog", icon: FileText },
   { href: "/hp-ctrl-8k3m9x/leads", label: "Leads", icon: Users },
   { href: "/hp-ctrl-8k3m9x/content", label: "Content", icon: FileText }, // TODO: Build page

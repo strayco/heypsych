@@ -11,6 +11,8 @@ import type { Outbound } from "@/lib/commercial/outbound";
 import { ToolMark } from "@/components/tools/ToolMark";
 import { GetItLinks } from "@/components/commercial/GetItLinks";
 import { formatReviewDate } from "@/domains/tools/clinician-hub/model";
+import type { PublicConsensus } from "@/domains/consensus/public";
+import { ConsensusBadge } from "@/components/tools/clinician/consensus/ConsensusScore";
 
 export interface CompareProduct {
   slug: string;
@@ -20,6 +22,8 @@ export interface CompareProduct {
   baa: "yes" | "no" | "unknown" | "na";
   suits: { label: string; note: string } | null;
   visit: Outbound | null;
+  /** Approved HeyPsych Consensus Score, if one is published. */
+  consensus?: PublicConsensus | null;
 }
 
 const BAA = { yes: "Signs a BAA", no: "No BAA", unknown: "BAA not stated", na: null } as const;
@@ -119,6 +123,16 @@ export function ClinicianCompare({
                 </p>
               )}
               {BAA[p.baa] && <p className="text-label-tertiary mt-3 text-[13px]">{BAA[p.baa]}</p>}
+              {p.consensus && (
+                <p className="mt-3">
+                  <ConsensusBadge consensus={p.consensus} name={p.name} />
+                  {p.profileHref && (
+                    <Link href={`${p.profileHref}#reviews`} className="text-label-tertiary hover:text-label-primary ml-2 text-[13px] underline">
+                      What reviewers say
+                    </Link>
+                  )}
+                </p>
+              )}
               <div className="mt-auto pt-5">
                 <GetItLinks slug={p.slug} name={p.name} primary={p.visit} source="clinician-compare" />
                 <div className="mt-3 flex gap-4 text-[14px]">

@@ -22,6 +22,8 @@ import type { SpecializedRecommendation } from "@/lib/tools/alternatives";
 import { FitExplorer, PricingExplorer } from "./ClinicianToolIslands";
 import type { Outbound } from "@/lib/commercial/outbound";
 import { TrackedOutboundLink } from "@/components/tools/clinician/TrackedOutboundLink";
+import type { PublicConsensus } from "@/domains/consensus/public";
+import { ConsensusScore } from "@/components/tools/clinician/consensus/ConsensusScore";
 
 function Section({ id, title, intro, children }: { id: string; title: string; intro?: string; children: React.ReactNode }) {
   return (
@@ -56,7 +58,10 @@ export function ClinicianToolExperience({
   comparisons,
   related,
   guide,
+  consensus = null,
 }: {
+  /** Approved HeyPsych Consensus Score; nothing renders without one. */
+  consensus?: PublicConsensus | null;
   /** Related tools in the same category, rendered by the page. */
   related?: React.ReactNode;
   tool: Model;
@@ -74,6 +79,7 @@ export function ClinicianToolExperience({
 
   const nav = [
     x.fit.length > 0 || x.bestFor.length > 0 ? { id: "fit", label: "Who it's for" } : null,
+    consensus ? { id: "reviews", label: "What reviewers say" } : null,
     { id: "pricing", label: "Pricing" },
     x.capabilities.length > 0 ? { id: "features", label: "What it does" } : null,
     { id: "compliance", label: "Compliance" },
@@ -172,6 +178,12 @@ export function ClinicianToolExperience({
         {(x.fit.length > 0 || x.bestFor.length > 0 || x.notFor.length > 0) && (
           <Section id="fit" title="Who it's for" intro={x.fit.length > 1 ? "Choose a kind of practice to see how it fits." : undefined}>
             <FitExplorer fit={x.fit} bestFor={x.bestFor} notFor={x.notFor} toolName={x.name} />
+          </Section>
+        )}
+
+        {consensus && (
+          <Section id="reviews" title="What reviewers say" intro="A summary of independent review sources, not our own testing.">
+            <ConsensusScore consensus={consensus} name={x.name} />
           </Section>
         )}
 

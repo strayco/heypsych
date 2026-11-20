@@ -20,6 +20,7 @@ import { resolveOutbound } from "@/lib/commercial/outbound";
 import { getJob, jobSlugFor, toHubProduct } from "@/domains/tools/clinician-hub/model";
 import { TrackComparisonView } from "@/components/analytics/TrackComparisonView";
 import { ClinicianCompare, type CompareProduct } from "@/components/tools/clinician/compare/ClinicianCompare";
+import { getPublicConsensus } from "@/lib/live/state";
 import {
   ClinicianToolService,
   type ClinicianToolV4,
@@ -184,9 +185,11 @@ export default async function CuratedComparisonPage({ params }: PageProps) {
     .map((s) => tools.get(s))
     .filter((t): t is ClinicianToolV4 => Boolean(t));
 
+  const consensus = await getPublicConsensus();
   const products: CompareProduct[] = toolList.map((t) => {
     const hp = toHubProduct(t);
     return {
+      consensus: consensus[t.slug] ?? null,
       slug: t.slug,
       name: t.name,
       profileHref: clinicianToolPath(t),

@@ -28,6 +28,7 @@ import {
   rankAlternatives,
 } from "@/lib/tools/alternatives";
 import { buildClinicianToolSchemas } from "@/lib/seo/schema-builders/clinician-tool";
+import { getPublicConsensus } from "@/lib/live/state";
 import { resolveOutbound } from "@/lib/commercial/outbound";
 import { getJob } from "@/domains/tools/clinician-hub/model";
 import { CLINICIAN_KEY_COMPARISONS } from "@/lib/seo/programmatic-seo-engine";
@@ -179,6 +180,7 @@ export default async function ToolDetailPage({ params }: PageProps) {
   }));
 
   const x = buildClinicianToolExperience(tool, categoryLabel);
+  const consensus = (await getPublicConsensus())[slug] ?? null;
   const guide = buildGuide(tool, x.audience);
 
   // Related tools that are not already listed as alternatives.
@@ -228,6 +230,7 @@ export default async function ToolDetailPage({ params }: PageProps) {
             ) : null
           }
           guide={guide}
+          consensus={consensus}
         />
 
         {/* Back Link */}

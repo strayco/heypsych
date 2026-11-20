@@ -4,7 +4,7 @@
  * Server only. Admin writes go through here; public reads go through
  * state.ts, which caches them. Every write runs in a transaction, history is
  * append-only, and the table is created by the same additive SQL as
- * supabase/migrations/047_hp_live_revisions.sql.
+ * supabase/migrations/047_hp_live_revisions.sql (kind 'consensus' from 048).
  */
 
 import type { PoolClient } from "pg";
@@ -15,7 +15,7 @@ import type { LiveRow } from "./apply-tools";
 export const LIVE_SCHEMA_SQL = `
 create table if not exists public.hp_live_revisions (
   id            bigserial primary key,
-  kind          text not null check (kind in ('tool', 'tool-new', 'flag', 'copy', 'experiment')),
+  kind          text not null check (kind in ('tool', 'tool-new', 'flag', 'copy', 'experiment', 'consensus')),
   key           text not null check (char_length(key) between 1 and 120),
   value         jsonb,
   status        text not null check (status in ('draft', 'published', 'superseded', 'discarded')),

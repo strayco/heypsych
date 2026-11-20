@@ -47,6 +47,7 @@ import { markFirstInteraction } from "@/components/path/analytics";
 import { useFlag, useVariant } from "@/lib/live/client";
 import type { ExperimentState, FlagState } from "@/lib/live/config";
 import { COPY, EXPERIMENTS } from "@/lib/live/registry";
+import type { PublicConsensus } from "@/domains/consensus/public";
 
 /** Live (Admin-managed) nonclinical settings, resolved on the server. */
 export interface ArchitectLive {
@@ -56,10 +57,13 @@ export interface ArchitectLive {
   draftCta: ExperimentState;
   draftTitle: string;
   draftBody: string;
+  /** Approved HeyPsych Consensus Scores by product slug (display only; never affects ranking or cost). */
+  consensus: Record<string, PublicConsensus>;
 }
 
 const LIVE_DEFAULTS: ArchitectLive = {
   catalogVersion: "0",
+  consensus: {},
   draftFlag: { enabled: true, rollout: 100 },
   ledgerFlag: { enabled: true, rollout: 100 },
   draftCta: { active: false, variants: EXPERIMENTS[0].variants.map((v) => ({ ...v })) },
@@ -658,6 +662,7 @@ export function PracticeArchitect({ live = LIVE_DEFAULTS }: { live?: ArchitectLi
         fingerprint={fingerprint}
         metadataMap={metadataMap}
         displayMap={displayMap}
+        consensus={live.consensus}
         isLoadingProducts={isInitialLoading}
         assignedSlugs={assignedSlugs}
         onClose={() => setSelectedObjectId(null)}

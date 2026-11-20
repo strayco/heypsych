@@ -9,6 +9,7 @@
  *    Architect, and a flag or copy change only the pages that use config:
  *      hp-live-tools   tool overlays and tools created in Admin
  *      hp-live-config  flags, approved copy, experiments
+ *      hp-live-consensus  HeyPsych Consensus Scores (public projection only)
  *  - Admin preview uses Next's draft mode: only a signed-in admin's browser
  *    renders drafts, uncached; everyone else gets the cached published state.
  *
@@ -22,12 +23,15 @@ import { cache } from "react";
 import type { LiveKind } from "./registry";
 import { liveVersion, type LiveRow } from "./apply-tools";
 import { resolveConfig, type LiveConfig } from "./config";
+import type { PublicConsensus } from "@/domains/consensus/public";
 
 export const TAG_TOOLS = "hp-live-tools";
 export const TAG_CONFIG = "hp-live-config";
+export const TAG_CONSENSUS = "hp-live-consensus";
 
 const TOOL_KINDS: LiveKind[] = ["tool", "tool-new"];
 const CONFIG_KINDS: LiveKind[] = ["flag", "copy", "experiment"];
+const CONSENSUS_KINDS: LiveKind[] = ["consensus"];
 const QUERY_TIMEOUT_MS = 3000;
 const BREAKER_MS = 60_000;
 
@@ -108,4 +112,34 @@ export const getLiveTools = cache(async (): Promise<LiveRows> => read(TOOL_KINDS
 export const getLiveConfig = cache(async (): Promise<LiveConfig> => {
   const { rows, version } = await read(CONFIG_KINDS, cachedConfig);
   return resolveConfig(rows, version);
+});
+
+/**
+ * Approved Consensus Scores by product slug. Rows are reduced to the public
+ * projection before caching, so private evidence never enters the data cache
+ * or reaches a page. No database, an outage or nothing approved: no scores
+ * (never a placeholder). The committed snapshot deliberately has none.
+ */
+async function consensusProjection(includeDrafts: boolean): Promise<PublicConsensus[]> {
+  const rows = await query(CONSENSUS_KINDS, includeDrafts);
+  const { projectConsensusRows } = await import("@/domains/consensus/server");
+  return projectConsensusRows(rows);
+}
+
+const cachedConsensus = unstable_cache(async (): Promise<PublicConsensus[]> => consensusProjection(false), ["hp-live", "consensus", "v1"], {
+  tags: [TAG_CONSENSUS],
+  revalidate: false,
+});
+
+export const getPublicConsensus = cache(async (): Promise<Record<string, PublicConsensus>> => {
+  if (!dbConfigured()) return {};
+  let list: PublicConsensus[] = [];
+  try {
+    if (await previewing()) list = await consensusProjection(true);
+    else if (Date.now() >= breakerUntil) list = await cachedConsensus();
+  } catch (error) {
+    breakerUntil = Date.now() + BREAKER_MS;
+    console.error("[live] consensus unavailable:", error instanceof Error ? error.message : error);
+  }
+  return Object.fromEntries(list.map((p) => [p.slug, p]));
 });

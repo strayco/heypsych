@@ -36,12 +36,16 @@ import { MOTION } from "@/domains/architect/world/scene";
 import { trackArchitectEvent } from "@/domains/architect/analytics";
 import type { WorldObjectState } from "@/domains/architect/world/world-state";
 import { SCHEMA_TO_TAXONOMY_CATEGORY } from "@/lib/schemas/clinician-tool-v4";
+import type { PublicConsensus } from "@/domains/consensus/public";
+import { ConsensusBadge } from "@/components/tools/clinician/consensus/ConsensusScore";
 
 interface ObjectInspectorProps {
   object: WorldObjectState | null;
   fingerprint: PracticeFingerprint;
   metadataMap: Map<string, ProductArchitectureMetadata>;
   displayMap: Map<string, ArchitectProductDisplay>;
+  /** Approved Consensus Scores by slug; display only. */
+  consensus?: Record<string, PublicConsensus>;
   isLoadingProducts: boolean;
   assignedSlugs: string[];
   onClose: () => void;
@@ -63,6 +67,7 @@ export function ObjectInspector({
   fingerprint,
   metadataMap,
   displayMap,
+  consensus = {},
   isLoadingProducts,
   assignedSlugs,
   onClose,
@@ -292,6 +297,7 @@ export function ObjectInspector({
                       current={currentFor(recommendation.recommended.productSlug)}
                       netDeltaCents={previewSelection?.(recommendation.recommended)?.deltaCents ?? null}
                       displayMap={displayMap}
+                      consensus={consensus[recommendation.recommended.productSlug] ?? null}
                       isAssigned={assignedSlugs.includes(
                         recommendation.recommended.productSlug
                       )}
@@ -315,6 +321,7 @@ export function ObjectInspector({
                           current={currentFor(option.productSlug)}
                           netDeltaCents={previewSelection?.(option)?.deltaCents ?? null}
                           displayMap={displayMap}
+                          consensus={consensus[option.productSlug] ?? null}
                           isAssigned={assignedSlugs.includes(
                             option.productSlug
                           )}
@@ -484,10 +491,12 @@ function OptionCard({
   current,
   netDeltaCents,
   displayMap,
+  consensus,
   isAssigned,
   emphasis = false,
   onSelect,
 }: {
+  consensus: PublicConsensus | null;
   option: ProductOption;
   /**
    * Net change to the plan's monthly total if this option is chosen, from the
@@ -545,6 +554,11 @@ function OptionCard({
               <Badge tone="warning">Requires verification</Badge>
             )}
           </div>
+          {consensus && (
+            <p className="mt-1.5">
+              <ConsensusBadge consensus={consensus} name={option.productName} />
+            </p>
+          )}
         </div>
 
         <div className="shrink-0 text-right">
