@@ -38,6 +38,7 @@ export const MERGED_TREATMENTS: Readonly<Record<string, string>> = {
   "venlafaxine-effexor": "venlafaxine-effexor-xr",
   "viloxazine-er-qelbree": "viloxazine-qelbree",
   "zonisamide-zonegran": "zonisamide-zonegran-zonisade",
+  "perphenazine-amitriptyline-triavil": "amitriptyline-perphenazine",
   "galantamine-razadyne": "galantamine-razadyne-er",
   "selegiline-emsam": "selegiline-emsam-zelapar",
   "valproate-semisodium-divalproex": "valproate-divalproex",
