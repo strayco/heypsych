@@ -46,8 +46,8 @@ export function Footer() {
     <footer id="site-footer" className="border-t border-separator bg-surface">
       {/* Crisis Support Banner */}
       <div className="bg-negative-tint border-b border-negative-border">
-        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
+        <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-negative text-white">
                 <Phone className="h-4 w-4" />
@@ -76,14 +76,14 @@ export function Footer() {
       </div>
 
       {/* Main Footer Content */}
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
           {/* Brand Section */}
           <div className="col-span-2 lg:col-span-2">
-            <div className="mb-4">
+            <div className="mb-3">
               <Wordmark size={28} />
             </div>
-            <p className="mb-6 max-w-xs text-sm leading-relaxed text-label-secondary">
+            <p className="mb-4 max-w-xs text-sm leading-relaxed text-label-secondary">
               Better mental health starts with better decisions.
             </p>
             <p className="text-xs text-label-tertiary">
@@ -99,10 +99,10 @@ export function Footer() {
           {/* Footer Links */}
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h4 className="mb-4 text-sm font-semibold text-label-primary">
+              <h4 className="mb-3 text-sm font-semibold text-label-primary">
                 {section.title}
               </h4>
-              <ul className="space-y-3">
+              <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <Link
@@ -121,8 +121,8 @@ export function Footer() {
 
       {/* Bottom Section */}
       <div className="border-t border-separator">
-        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
+        <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col items-center justify-between gap-2 sm:flex-row">
             <p className="text-sm text-label-tertiary">
               © {currentYear} {siteConfig.name}. All rights reserved.
             </p>
