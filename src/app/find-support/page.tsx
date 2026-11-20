@@ -30,16 +30,11 @@ import { SupportEntry } from "./_components/SupportEntry";
 import { NextStepJourney } from "@/components/path/NextStepJourney";
 import { SYMPTOM_CATEGORIES, SYMPTOM_REGISTRY } from "@/domains/symptoms/registry";
 import type { SymptomRef } from "@/domains/path";
+import { findSupportMetadata } from "./_lib/seo";
 
-export const metadata: Metadata = {
-  title: "Find Your Way",
-  description:
-    "Choose a starting point: understand what you're experiencing, explore treatment and support, help someone you care about, or find a professional. Not a diagnosis.",
-  robots: {
-    index: false, // Session pages should not be indexed
-    follow: false,
-  },
-};
+export async function generateMetadata({ searchParams }: FindSupportPageProps): Promise<Metadata> {
+  return findSupportMetadata(await searchParams);
+}
 
 /** Public symptom reference data, so the journey can pre-fill from the visitor's own notes. */
 function symptomRefs(): SymptomRef[] {
@@ -47,7 +42,7 @@ function symptomRefs(): SymptomRef[] {
 }
 
 interface FindSupportPageProps {
-  searchParams: Promise<{ need?: string | string[] }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }
 
 export default async function FindSupportPage({ searchParams }: FindSupportPageProps) {

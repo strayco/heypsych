@@ -293,6 +293,7 @@ export class SitemapGenerator {
       '/resources/support-community',
       '/resources/support-community/immediate-crisis',
       '/resources/support-community/organizations-communities',
+      '/find-support',
       '/psychiatrists',
       '/search',
     ];
