@@ -38,16 +38,23 @@ export const dynamic = "force-dynamic";
 const KIND = "consensus" as const;
 
 /**
- * Invalidate, then render every public page that shows this product's score
- * so no visitor receives the stale version (see warm.ts).
+ * Invalidate, then render every public page that shows any pilot score so no
+ * visitor receives a stale version (see warm.ts). All scores share one cache
+ * tag, so publishing one product makes every product's pages stale again:
+ * warm them all, not only the product just changed.
  */
-async function revalidate(request: NextRequest, slug: string) {
+async function revalidate(request: NextRequest) {
   revalidateTag(TAG_CONSENSUS, "max");
-  const tool = await ClinicianToolService.getBaseTool(slug);
-  const profile = tool ? clinicianToolPath(tool) : null;
-  const comparisons = (await getAllPublishableCurated()).filter((c) => c.tools.includes(slug)).map((c) => `/tools/compare/${c.slug}`);
-  const paths = [...(profile ? [profile] : []), ...comparisons, "/architect"];
-  return warmPaths(request.nextUrl.origin, paths);
+  const curated = await getAllPublishableCurated();
+  const paths: string[] = [];
+  for (const slug of CONSENSUS_PILOT) {
+    const tool = await ClinicianToolService.getBaseTool(slug);
+    const profile = tool ? clinicianToolPath(tool) : null;
+    if (profile) paths.push(profile);
+    for (const c of curated) if (c.tools.includes(slug)) paths.push(`/tools/compare/${c.slug}`);
+  }
+  paths.push("/architect");
+  return warmPaths(request.nextUrl.origin, [...new Set(paths)]);
 }
 
 async function revisions(slug: string): Promise<Revision[]> {
@@ -203,13 +210,13 @@ export async function POST(request: NextRequest) {
         if (!approvalIsCurrent(record)) return json({ error: "Approve this draft before publishing" }, 409);
         if (record.approval!.algorithm !== ALGORITHM) return json({ error: "Approved with an older algorithm; approve again" }, 409);
         const revision = await publishDraft(KIND, slug);
-        const warmed = await revalidate(request, slug);
+        const warmed = await revalidate(request);
         return json({ revision: describe(revision), warmed });
       }
       case "unpublish": {
         if (!revs.some((r) => r.status === "published" && r.value !== null)) return json({ error: "Nothing is published" }, 409);
         const revision = await publishValue(KIND, slug, null, note ?? "Unpublished", "admin");
-        const warmed = await revalidate(request, slug);
+        const warmed = await revalidate(request);
         return json({ revision: describe(revision), warmed });
       }
       case "rollback": {
@@ -218,7 +225,7 @@ export async function POST(request: NextRequest) {
         if (!target) return json({ error: "Not a revision of this product" }, 404);
         if (target.value !== null && !approvalIsCurrent(parseRecord(target.value))) return json({ error: "That revision was never approved" }, 409);
         const revision = await rollbackTo(target.id, "admin");
-        const warmed = await revalidate(request, slug);
+        const warmed = await revalidate(request);
         return json({ revision: describe(revision), warmed });
       }
       case "discard":

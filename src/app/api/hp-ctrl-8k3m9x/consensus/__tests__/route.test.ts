@@ -145,6 +145,10 @@ describe.skipIf(!DB)("Consensus Score admin flow (LIVE_TEST_DB)", () => {
     expect(warmed).toContain("/tools/for-clinicians/ehr-practice-management/simplepractice");
     expect(warmed).toContain("/architect");
     expect(warmed.some((p) => p.startsWith("/tools/compare/") && p.includes("simplepractice"))).toBe(true);
+    // One shared tag: every pilot product's profile is re-rendered, not only this one.
+    expect(warmed).toContain("/tools/for-clinicians/ai-scribe-documentation/mentalyc");
+    expect(warmed).toContain("/tools/for-clinicians/telehealth-communication/doxy-me");
+    expect(new Set(warmed).size).toBe(warmed.length);
 
     const scores = await publicScores();
     const p = scores[SLUG];
