@@ -114,6 +114,10 @@ export function buildClinicianRedirects(root: string = process.cwd()): Redirect[
     );
   }
 
+  // Retired from the clinician catalogue, but the vendor keeps a live page,
+  // with its own alternatives section, in the apps directory.
+  out.push(r("/tools/alternatives/iris-telehealth", "/tools/iris-telehealth#compare"));
+
   // Audience pages → the hub, preselecting the kind of practice.
   out.push(
     r("/tools/for-therapists", hubFor("solo-therapist")),
