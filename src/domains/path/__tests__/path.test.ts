@@ -447,3 +447,29 @@ describe("legacy records: boxed warning labelled in reviewed precautions", () =>
     expect(labeledBoxedWarning(undefined)).toBeUndefined();
   });
 });
+
+describe("approved boxed warnings on four extended-release and long-acting records", () => {
+  // Approved 2026-11-19 (docs/active/contracts/AUTHORITY_DECISIONS.md).
+  const DEMENTIA = "Increased mortality in older patients with dementia-related psychosis";
+  const cases: Array<[string, string]> = [
+    ["quetiapine-er-seroquel-xr", "Increased mortality in older patients with dementia-related psychosis; suicidal thoughts and behaviors."],
+    ["risperidone-lai-risperdal-consta", `${DEMENTIA}.`],
+    ["risperidone-microsphereslai", `${DEMENTIA}.`],
+    ["zolpidem-cr-ambien-cr", "Complex sleep behaviors."],
+  ];
+
+  for (const [slug, wording] of cases) {
+    it(`${slug} shows its approved boxed warning and keeps its reviewed precautions`, async () => {
+      const t = await loadTreatment(slug);
+      expect(t, slug).toBeTruthy();
+      expect(t!.clinical_profile?.safety?.black_box_warning).toBe(wording);
+      expect(treatmentFacts(t!).boxedWarning).toBeTruthy();
+      expect(treatmentQuestions(t!.identity.name, treatmentFacts(t!))[0].text).toMatch(/boxed warning/);
+
+      const raw = JSON.parse(fs.readFileSync(path.join(process.cwd(), `data/treatments/medications/${slug}.json`), "utf8"));
+      const section = raw.sections.find((s: { type?: string }) => s.type === "warnings");
+      expect(section.black_box).toBe(wording);
+      expect(section.other.length).toBeGreaterThanOrEqual(3);
+    });
+  }
+});
