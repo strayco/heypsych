@@ -226,10 +226,12 @@ describe("public projection", () => {
 
   it("exposes only the approved score, confidence, date, summaries and source names", () => {
     const p = toPublicConsensus("simplepractice", { observations: strong(), editorial, approval })!;
-    expect(Object.keys(p).sort()).toEqual(["concerns", "confidence", "explanation", "score", "slug", "sourceNames", "strengths", "updatedAt"]);
+    expect(Object.keys(p).sort()).toEqual(["concerns", "confidence", "explanation", "score", "slug", "strengths", "updatedAt"]);
     const text = JSON.stringify(p);
+    expect(text).not.toMatch(/Capterra|"G2"|sourceNames/);
     expect(text).not.toMatch(/example\.com|reviewCount|effectiveReviews|normalized|"share"|"rating"|themes|observ/i);
-    expect(p.explanation).toMatch(/does not cover every review/);
+    expect(p.explanation).toMatch(/^HeyPsych Consensus Score is an independently developed, evidence-informed assessment/);
+    expect(p.explanation).toMatch(/Vendor payments do not influence scores\.$/);
   });
 
   it("shows nothing for unapproved, non-pilot or summary-less records", () => {

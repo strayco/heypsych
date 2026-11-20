@@ -2,7 +2,7 @@
  * HeyPsych Consensus Score — public display.
  *
  * Renders only the approved public projection (score, confidence, date,
- * original strengths and concerns, source names, a fixed explanation). No
+ * original strengths and concerns, a fixed explanation; no source names). No
  * hooks, so it renders on the server and inside client components alike.
  * Nothing renders without an approved score: no placeholder, no "N/A".
  */
@@ -52,7 +52,7 @@ export function ConsensusScore({ consensus, name, headingLevel = "h3" }: { conse
         <div className="text-right">
           <span className={`inline-block rounded-full px-3 py-1 text-[13px] font-medium ${CONFIDENCE_STYLE[consensus.confidence]}`}>{consensus.confidence} confidence</span>
           <p className="text-label-tertiary mt-2 text-[13px]">
-            Updated <time dateTime={consensus.updatedAt}>{formatDate(consensus.updatedAt)}</time>
+            Last reviewed <time dateTime={consensus.updatedAt}>{formatDate(consensus.updatedAt)}</time>
           </p>
         </div>
       </div>

@@ -10,7 +10,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ConsensusScore } from "@/components/tools/clinician/consensus/ConsensusScore";
-import { explanationFor, type PublicConsensus } from "@/domains/consensus/public";
+import { CONSENSUS_EXPLANATION, type PublicConsensus } from "@/domains/consensus/public";
 import { SOURCE_LABELS, SOURCE_TYPES, type ConsensusRecord, type Observation } from "@/domains/consensus/schema";
 
 type Calc = {
@@ -178,8 +178,7 @@ export function ConsensusAdmin() {
           updatedAt: draftApproval.result.asOf,
           strengths: draft.record.editorial.strengths,
           concerns: draft.record.editorial.concerns,
-          sourceNames: draftApproval.result.sourceNames,
-          explanation: explanationFor(draftApproval.result.sourceNames),
+          explanation: CONSENSUS_EXPLANATION,
         }
       : null;
   const calc = detail?.calculation;

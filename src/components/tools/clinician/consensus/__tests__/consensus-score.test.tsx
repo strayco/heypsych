@@ -2,7 +2,7 @@ import React from "react";
 import { describe, expect, it } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { ConsensusBadge, ConsensusScore } from "../ConsensusScore";
-import { explanationFor, type PublicConsensus } from "@/domains/consensus/public";
+import { CONSENSUS_EXPLANATION, type PublicConsensus } from "@/domains/consensus/public";
 
 const c: PublicConsensus = {
   slug: "simplepractice",
@@ -11,23 +11,22 @@ const c: PublicConsensus = {
   updatedAt: "2026-11-20",
   strengths: ["Reviewers often praise the scheduling and client portal."],
   concerns: ["Some reviewers report slow responses from support."],
-  sourceNames: ["Capterra", "G2"],
-  explanation: explanationFor(["Capterra", "G2"]),
+  explanation: CONSENSUS_EXPLANATION,
 };
 
 describe("Consensus Score display", () => {
-  it("shows score /100, confidence, date, strengths, concerns and the explanation", () => {
+  it("shows score /100, confidence, last-reviewed date, strengths, concerns and the explanation, and no source details", () => {
     const html = renderToStaticMarkup(<ConsensusScore consensus={c} name="SimplePractice" />);
     expect(html).toContain(">84<");
     expect(html).toContain("/100");
     expect(html).toContain("Moderate confidence");
-    expect(html).toContain('<time dateTime="2026-11-20">Nov 20, 2026</time>');
+    expect(html).toContain('Last reviewed <time dateTime="2026-11-20">Nov 20, 2026</time>');
     expect(html).toContain("Reviewers often praise the scheduling and client portal.");
     expect(html).toContain("Some reviewers report slow responses from support.");
-    expect(html).toContain("Capterra and G2");
-    expect(html).toMatch(/not HeyPsych testing/);
-    expect(html).toMatch(/does not cover every review online/);
-    expect(html).toMatch(/Vendors cannot pay to change it/);
+    expect(html).toContain("HeyPsych Consensus Score is an independently developed, evidence-informed assessment that synthesizes multiple evaluation signals into a single score.");
+    expect(html).toContain("Vendor payments do not influence scores.");
+    expect(html).not.toMatch(/Capterra|G2|TrustRadius|Trustpilot|App Store|Google Play|reviews? count|weighted|\bsources?\b/i);
+    expect(html).not.toMatch(/tested|testing|verified by HeyPsych/i);
   });
 
   it("is accessible: a labelled group with a heading and the product name for screen readers", () => {

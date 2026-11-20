@@ -154,9 +154,9 @@ describe.skipIf(!DB)("Consensus Score admin flow (LIVE_TEST_DB)", () => {
     const p = scores[SLUG];
     expect(p.score).toBeGreaterThan(80);
     expect(p.confidence).toBe("High");
-    expect(p.sourceNames).toEqual(["Capterra", "TrustRadius", "Trustpilot"]);
+    expect(p).not.toHaveProperty("sourceNames");
     const text = JSON.stringify(scores);
-    expect(text).not.toMatch(/reviews\.example|PRIVATE-NOTE-MARKER|support wait times|reviewCount|observations|approval|hash/);
+    expect(text).not.toMatch(/reviews\.example|PRIVATE-NOTE-MARKER|support wait times|reviewCount|observations|approval|hash|Capterra|TrustRadius|Trustpilot/);
 
     const overview = await get();
     expect(overview.data.products.find((x: { slug: string }) => x.slug === SLUG).published.score).toBe(p.score);

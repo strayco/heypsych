@@ -3,8 +3,8 @@
  *
  * The only shape public pages receive. Built from the approval snapshot
  * frozen when an editor approved the record, never from observations, so no
- * source URL, per-source rating, review count, weight or theme can reach a
- * page, the data cache or the browser.
+ * source name, URL, per-source rating, review count, weight or theme can
+ * reach a page, the data cache, the browser or an API response.
  */
 
 import { ApprovalZ, EditorialZ, isPilotSlug, type ApprovedResult } from "./schema";
@@ -17,20 +17,21 @@ export interface PublicConsensus {
   updatedAt: string;
   strengths: string[];
   concerns: string[];
-  sourceNames: string[];
   explanation: string;
 }
 
 export const CONFIDENCE_TEXT: Record<ApprovedResult["confidence"], string> = {
-  High: "High confidence: several independent sources with many recent reviews that broadly agree.",
-  Moderate: "Moderate confidence: more than one independent source, with fewer reviews or less recent evidence.",
-  Limited: "Limited confidence: the evidence is thin or the sources disagree, so treat this score as a rough guide.",
+  High: "High confidence: the available evidence is strong, recent and consistent.",
+  Moderate: "Moderate confidence: the evidence is reasonably consistent but less extensive or less recent.",
+  Limited: "Limited confidence: the available evidence is thinner or less consistent, so treat this score as a rough guide.",
 };
 
-export function explanationFor(sourceNames: string[]): string {
-  const list = sourceNames.length > 1 ? `${sourceNames.slice(0, -1).join(", ")} and ${sourceNames.at(-1)}` : sourceNames[0];
-  return `Combines overall ratings from ${sourceNames.length} independent review source${sourceNames.length === 1 ? "" : "s"} (${list}), weighted for review volume, recency and source quality. It reflects what reviewers report, not HeyPsych testing, and does not cover every review online. Vendors cannot pay to change it.`;
-}
+/**
+ * The one public explanation. Deliberately names no source, count, rating,
+ * weight or formula (those stay in Admin) and claims no hands-on testing.
+ */
+export const CONSENSUS_EXPLANATION =
+  "HeyPsych Consensus Score is an independently developed, evidence-informed assessment that synthesizes multiple evaluation signals into a single score. Each assessment undergoes structured review and is accompanied by a confidence rating reflecting the strength and consistency of available evidence. Vendor payments do not influence scores.";
 
 /** Published value -> public shape, or null if anything is missing or invalid. */
 export function toPublicConsensus(slug: string, value: unknown): PublicConsensus | null {
@@ -48,7 +49,6 @@ export function toPublicConsensus(slug: string, value: unknown): PublicConsensus
     updatedAt: result.asOf,
     strengths: editorial.data.strengths,
     concerns: editorial.data.concerns,
-    sourceNames: result.sourceNames,
-    explanation: explanationFor(result.sourceNames),
+    explanation: CONSENSUS_EXPLANATION,
   };
 }
